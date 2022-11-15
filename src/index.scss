@@ -1,0 +1,18 @@
+@import 'normalize.css';
+* {
+  outline: 1px red solid;
+}
+@import './blocks/page.scss';
+@import './blocks/phone.scss';
+@import './blocks/cart.scss';
+@import './blocks/link.scss';
+@import './blocks/header.scss';
+@import './blocks/content.scss';
+@import './blocks/navigation.scss';
+@import './blocks/product.scss';
+@import './blocks/contacts.scss';
+@import './blocks/text-container.scss';
+@import './blocks/footer.scss';
+@import './blocks/nav-links.scss';
+@import './blocks/popup.scss';
+@import './blocks/product-cart.scss';

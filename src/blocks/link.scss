@@ -1,0 +1,50 @@
+.link {
+  color: white;
+  cursor: pointer;
+  transition: 0.5s;
+  text-decoration: none;
+  padding: 0.5%;
+  border-radius: 8px;
+
+  &:hover {
+    transition: 0.5s;
+    transform: scale(1.05);
+  }
+
+  &_for_footer {
+    justify-self: flex-end;
+  }
+
+  &_active {
+    box-sizing: border-box;
+    color: black;
+    background-color:rgb(254, 217, 68);
+  }
+
+  &_active-for-list {
+    padding: 2.5%;
+  }
+
+  &_source {
+    min-width: 30px;
+    min-height: 30px;
+    border-radius: 50%;
+    background-color: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+  }
+
+  &_vk {
+    background-image: url(../images/vk.svg);
+  }
+  &_inst {
+    background-image: url(../images/instagram.svg);
+  }
+  &_youtube {
+    background-image: url(../images/youtube.svg);
+  }
+  &_tg {
+    background-image: url(../images/telegram.svg);
+  }
+}

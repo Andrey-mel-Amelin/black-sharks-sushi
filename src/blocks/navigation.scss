@@ -1,0 +1,47 @@
+.navigation {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  min-height: 31px;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+
+  &__roll {
+    cursor: pointer;
+    position: relative;
+  }
+
+  &__roll-list {
+    transition: 0.5s;
+    min-width: 205px;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    top: 19px;
+    right: -127%;
+    list-style: none;
+    position: absolute;
+
+    &-item {
+      align-items: center;
+      justify-content: center;
+      min-height: 31px;
+      display: flex;
+      width: 100%;
+
+      &:nth-child(1) {
+        padding-top: 10px;
+      }
+
+      div {
+        width: 15px;
+        height: 15px;
+        border-top: 1px solid grey;
+        border-right: 1px solid grey;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+.contacts {
+  padding-top: 30px;
+  display: grid;
+  gap: 30px;
+  grid-template-rows: repeat(4, minmax(min-content, max-content));
+
+  &__text {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+
+    &_header {
+      font-weight: 700;
+      color: rgb(154, 154, 154);
+    }
+  }
+}
