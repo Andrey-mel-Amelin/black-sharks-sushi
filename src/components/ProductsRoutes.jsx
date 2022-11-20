@@ -14,7 +14,7 @@ function ProductsRoutes({ product }) {
         element={
           <Product
             product={product}
-            name={product.name}
+            name={product.nameProduct}
             about={product.about}
             price={product.price}
             type={product.type}
@@ -26,7 +26,7 @@ function ProductsRoutes({ product }) {
         element={
           <Product
             product={product}
-            name={product.name}
+            name={product.nameProduct}
             about={product.about}
             price={product.price}
             type={product.type}

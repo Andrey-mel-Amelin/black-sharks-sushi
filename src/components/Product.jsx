@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteItemFromCart, setItemInCart } from '../redux/cart/reducer';
 
 function Product({ product, name, about, price, type }) {
-  const imgName = name.toLowerCase().replace(/\s+/g, '');
-
   const dispatch = useDispatch();
   const products = useSelector((state) => state.cart.itemsInCart);
   const isProductsInCart = products.some((i) => i._id === product._id);
@@ -21,7 +19,7 @@ function Product({ product, name, about, price, type }) {
   return (
     <article onClick={handleClick} className="product-list__item">
       <div className={type !== 'pizza' ? 'product-list__border' : 'product-list__border product-list__border_disable'}>
-        <img className="product-list__image" src={require(`../images/products/${imgName}.png`)} alt={name} />
+        <img className="product-list__image" src={product.image.path} alt={name} />
       </div>
       <h3 className="product-list__name">{name}</h3>
       <p className="product-list__about">{about}</p>

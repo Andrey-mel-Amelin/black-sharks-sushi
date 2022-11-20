@@ -1,8 +1,9 @@
 @import 'normalize.css';
-* {
+/* * {
   outline: 1px red solid;
-}
+} */
 @import './blocks/page.scss';
+@import './blocks/button.scss';
 @import './blocks/phone.scss';
 @import './blocks/cart.scss';
 @import './blocks/link.scss';

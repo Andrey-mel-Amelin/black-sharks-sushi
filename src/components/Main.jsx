@@ -1,10 +1,9 @@
 import React from 'react';
 import ProductsRoutes from './ProductsRoutes';
-import { productList } from '../constants/constants';
 import Navigation from './Navigation';
 import InfoRoutes from './InfoRoutes';
 
-function Main({ activeButtonName, location }) {
+function Main({productsList, activeButtonName, location }) {
   const locationForAnnouncement = ['/', '/roll', '/gorroll', '/meksroll', '/nabor'];
   const locationForProducts = ['/', '/roll', '/gorroll', '/meksroll', '/nabor', '/pizza', '/zakuska', '/souce'];
 
@@ -20,7 +19,7 @@ function Main({ activeButtonName, location }) {
       )}
       {locationForProducts.includes(location.pathname) && (
         <section className="product-list">
-          {productList.map((product) => (
+          {productsList.map((product) => (
             <ProductsRoutes key={product._id} product={product} />
           ))}
         </section>

@@ -1,19 +1,24 @@
 .popup {
   opacity: 0;
   visibility: hidden;
-  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.397);
   transition: 0.5s;
+  position: fixed;
 
   &_active {
-    transition: 0.5s;
+    transition: .5s;
     opacity: 1;
     visibility: visible;
+
+    .popup__outer-container {
+      transition: .5s;
+      transform:translateY(0);
+    }
   }
 
   &__close-btn {
@@ -48,14 +53,25 @@
     }
   }
 
-  &__container {
+  &__outer-container {
+    transition: 1s;
+    transform:translateY(-200%);
+    display: flex;
+    position: relative;
+    height: 80vh;
+  }
+
+  &__inner-container {
+    min-width: 649px;
+    height: 100%;
+    overflow-y: auto;
     padding: 30px;
     display: flex;
+    gap: 30px;
     flex-direction: column;
     background-color: white;
     color: black;
     border-radius: 8px;
-    position: relative;
   }
 
   &__text {
@@ -64,5 +80,8 @@
   }
 
   &__products-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px
   }
 }
