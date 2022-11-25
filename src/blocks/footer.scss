@@ -57,12 +57,20 @@
   &__box {
     width: 80%;
     display: grid;
-    align-items: center;
+    align-items: flex-start;
     grid-template-columns: repeat(3, 1fr);
 
     p {
       cursor: default;
       margin: 0;
     }
+  }
+
+  &__input {
+    background-color: transparent;
+    border: 0;
+    width: 10px;
+    cursor: default;
+    color: transparent;
   }
 }

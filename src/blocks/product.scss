@@ -21,16 +21,22 @@
     padding: 10px;
     gap: 20px;
     cursor: pointer;
+    border-radius: 10px;
 
     &:hover {
       background-color: rgb(25, 25, 25);
-      border-radius: 10px;
-      transform: scale(1.05);
+      transform: scale(1.03);
       transition: 0.5s;
+      box-shadow: 0 0 20px 10px rgb(30, 30, 30);
 
       .product-list__border {
         background-color: rgb(25, 25, 25);
       }
+    }
+
+    &:active {
+      transition: .1s;
+      transform: scale(0.99);
     }
   }
 
@@ -58,6 +64,7 @@
   &__image {
     max-width: 100%;
     object-fit: contain;
+    pointer-events: none;
   }
 
   &__button {

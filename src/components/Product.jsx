@@ -1,18 +1,18 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteItemFromCart, setItemInCart } from '../redux/cart/reducer';
+import { addToCart, deleteToCart } from '../redux/cart/cartSlice';
 
 function Product({ product, name, about, price, type }) {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.cart.itemsInCart);
+  const products = useSelector((state) => state.cart.cartItems);
   const isProductsInCart = products.some((i) => i._id === product._id);
 
   function handleClick(e) {
     e.stopPropagation();
     if (isProductsInCart) {
-      dispatch(deleteItemFromCart(product._id));
+      dispatch(deleteToCart(product));
     } else {
-      dispatch(setItemInCart(product));
+      dispatch(addToCart(product));
     }
   }
 

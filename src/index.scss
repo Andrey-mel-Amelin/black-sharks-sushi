@@ -1,6 +1,6 @@
 @import 'normalize.css';
 /* * {
-  outline: 1px red solid;
+  outline: 1px rgba(253, 0, 0, 0.605) solid;
 } */
 @import './blocks/page.scss';
 @import './blocks/button.scss';
@@ -17,3 +17,4 @@
 @import './blocks/nav-links.scss';
 @import './blocks/popup.scss';
 @import './blocks/product-cart.scss';
+@import './blocks/form.scss';

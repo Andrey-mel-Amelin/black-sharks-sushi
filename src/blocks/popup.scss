@@ -59,6 +59,10 @@
     display: flex;
     position: relative;
     height: 80vh;
+
+    &_for_authorize {
+      height: max-content;
+    }
   }
 
   &__inner-container {

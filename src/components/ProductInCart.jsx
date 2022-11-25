@@ -1,5 +1,5 @@
-import { useDispatch } from 'react-redux';
-import { deleteItemFromCart, decrementProduct, incrementProduct } from '../redux/cart/reducer';
+import { useDispatch } from "react-redux";
+import { decrementProduct, deleteToCart, incrementProduct } from "../redux/cart/cartSlice";
 
 function ProductInCart({ product }) {
   const dispatch = useDispatch();
@@ -14,14 +14,14 @@ function ProductInCart({ product }) {
         <span className="button__sign" />
       </button>
 
-      <span className="product-cart__quantity">{product.quantity}</span>
+      <span className="product-cart__quantity">{product.cartQuantity}</span>
 
       <button onClick={() => dispatch(decrementProduct(product))} className="button">
         <span className="button__sign button__sign_type_minus" />
       </button>
-      <span className="product-cart__total-price-product">{product.quantity * product.price} руб.</span>
-      <button onClick={() => dispatch(deleteItemFromCart(product._id))} className="button">
-        <span className="button__sign button__sign_type_close" />
+      <span className="product-cart__total-price-product">{product.cartQuantity * product.price} руб.</span>
+      <button onClick={() => dispatch(deleteToCart(product))} className="button">
+        <span className="button__sign button__sign_type_delete" />
       </button>
     </div>
   );

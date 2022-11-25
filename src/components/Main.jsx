@@ -3,7 +3,7 @@ import ProductsRoutes from './ProductsRoutes';
 import Navigation from './Navigation';
 import InfoRoutes from './InfoRoutes';
 
-function Main({productsList, activeButtonName, location }) {
+function Main({ isLoadingProducts, products, activeButtonName, location }) {
   const locationForAnnouncement = ['/', '/roll', '/gorroll', '/meksroll', '/nabor'];
   const locationForProducts = ['/', '/roll', '/gorroll', '/meksroll', '/nabor', '/pizza', '/zakuska', '/souce'];
 
@@ -19,9 +19,11 @@ function Main({productsList, activeButtonName, location }) {
       )}
       {locationForProducts.includes(location.pathname) && (
         <section className="product-list">
-          {productsList.map((product) => (
-            <ProductsRoutes key={product._id} product={product} />
-          ))}
+          {isLoadingProducts ? (
+            <></>
+          ) : (
+            products.map((product) => <ProductsRoutes key={product._id} product={product} />)
+          )}
         </section>
       )}
       <InfoRoutes />

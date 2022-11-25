@@ -1,11 +1,14 @@
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 
-function Cart({onCartPopup}) {
-  const products = useSelector((state) => state.cart.itemsInCart);
-
+function Cart({ productsInCart, onCartPopup }) {
+  const { cartTotalQuantity } = useSelector((state) => state.cart);
+  
   return (
-    <div onClick={() => onCartPopup(true)} className={`cart ${products.length >= 1 ? 'cart_visible' : ''}`}>
-      <span className="cart__count">{products.length}</span>
+    <div
+      onClick={() => onCartPopup(true)}
+      className={`cart ${productsInCart.length >= 1 ? 'cart_visible' : ''}`}
+    >
+      <span className="cart__count">{cartTotalQuantity}</span>
     </div>
   );
 }

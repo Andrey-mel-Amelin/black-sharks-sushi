@@ -28,7 +28,7 @@
         calc(100% + var(--b) / 2) / calc(110% + var(--b)) calc(50% + var(--b));
     }
 
-    &_type_close {
+    &_type_delete {
       transform: rotate(45deg);
     }
   }
