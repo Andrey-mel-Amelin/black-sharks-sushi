@@ -22,7 +22,7 @@ function Footer({ setIsAdminPopupOpen, location }) {
             <span>Контакты</span>
             <p>Доставка суши, роллов, пицца в городе Северск.</p>
             <p>Прием заявок ПН-ЧТ: с 12:00 до 22:00, ПТ-СБ: с 12:00 до 23:00 ВС: 12:00 до 22:00</p>
-            <p>Адрес: г.Северск ул.Лесная 1А.стр5 (2 этаж)</p>
+            <p>Адрес: г. Северск ул.Лесная 1А.стр5 (2 этаж)</p>
           </div>
           <ul className="footer__info-list">
             <li className="footer__info-list-item footer__info-item_contact">
@@ -33,7 +33,7 @@ function Footer({ setIsAdminPopupOpen, location }) {
             </li>
             <li className="footer__info-list-item footer__info-item_adress">
               <p>
-                <span>Адрес</span>г.Северск ул.Лесная 1А.стр5 (2 этаж) вход с торца
+                <span>Адрес</span>г. Северск ул.Лесная 1А.стр5 (2 этаж) вход с торца
               </p>
             </li>
             <li className="footer__info-list-item footer__info-item_time-work">

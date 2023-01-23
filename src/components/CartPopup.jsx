@@ -28,7 +28,7 @@ function CartPopup({ productsInCart, isOpen, onClose }) {
               <ProductInCart key={product._id} product={product} />
             ))}
           </div>
-          <span>Итого: {cartTotalAmount} руб.</span>
+          <span className='popup__total-sum'>Итого: {cartTotalAmount} руб.</span>
         </div>
       </div>
     </div>

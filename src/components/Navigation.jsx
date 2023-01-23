@@ -78,7 +78,8 @@ function Navigation({ activeButtonName }) {
       <Link className={`link ${activeButtonName === '/spec' ? 'link_active' : ''}`} to="/spec">
         СПЕЦ ПРЕДЛОЖЕНИЯ
       </Link>
-    </nav>
+      {/* </nav> */}
+      {/* navlink */}
   );
 }
 
