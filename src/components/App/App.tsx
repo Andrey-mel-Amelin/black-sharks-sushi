@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
+import { Location, useLocation } from 'react-router-dom';
 import { AdminContext } from '../../contexts/AdminContext';
 import Cart from '../Cart/Cart';
 import Footer from '../Footer/Footer';
@@ -11,16 +10,17 @@ import CartPopup from '../CartPopup/CartPopup';
 import LoginPopup from '../LoginPopup/LoginPopup';
 import { useGetAllProductsQuery } from '../../utils/productsApi';
 import { useSelector } from 'react-redux';
+import { State } from '../../types/redux';
 
 function App() {
   const { data, isLoading } = useGetAllProductsQuery();
+  const location: Location = useLocation();
   const [isPopupCartOpen, setIsPopupCartOpen] = useState(false);
   const [isAdminPopupOpen, setIsAdminPopupOpen] = useState(false);
-  const location = useLocation();
+  const [activeButtonName, setActiveButtonName] = useState('');
   /*   const [loggedIn, setLoggedIn] = useState(false); */
   const [admin, setAdmin] = useState({});
-  const productsInCart = useSelector((state) => state.cart.cartItems);
-
+  const productsInCart = useSelector((state: State) => state.cart.cartItems);
 
   useEffect(() => {
     if (productsInCart.length === 0) {
@@ -56,10 +56,14 @@ function App() {
         <Phone />
         <Cart productsInCart={productsInCart} onCartPopup={setIsPopupCartOpen} />
         <Header />
-        <Main isLoadingProducts={isLoading} products={data} location={location} activeButtonName={activeButtonName} />
+        <Main isLoadingProducts={isLoading} products={data!} location={location} activeButtonName={activeButtonName} />
         <Footer setIsAdminPopupOpen={setIsAdminPopupOpen} location={location} />
         <CartPopup productsInCart={productsInCart} onClose={() => setIsPopupCartOpen(false)} isOpen={isPopupCartOpen} />
-        <LoginPopup onClose={() => setIsAdminPopupOpen(false)} isOpen={isAdminPopupOpen} /* onLogin */ />
+        <LoginPopup
+          onLogin={() => {}}
+          onClose={() => setIsAdminPopupOpen(false)}
+          isOpen={isAdminPopupOpen} /* onLogin */
+        />
       </div>
     </AdminContext.Provider>
   );

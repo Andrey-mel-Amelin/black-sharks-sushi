@@ -3,17 +3,14 @@
   justify-content: center;
   height: max-content;
   width: 100%;
-  grid-template: repeat(auto-fill, minmax(300px, auto)) / repeat(auto-fill, minmax(min-content, 373px));
+  grid-template: repeat(auto-fill, minmax(min-content, 330px)) / repeat(auto-fill, minmax(min-content, 373px));
+  grid-auto-flow: column;
   padding-top: 50px;
-  gap: 40px;
-
-  @media screen and (max-width: 1300px) {
-    grid-template-columns: repeat(auto-fill, minmax(min-content, 330px));
-    gap: 20px;
-  }
+  gap: 20px;
 
   &__item {
     display: grid;
+    min-width: 373px;
     grid-template-rows: repeat(auto-fill, minmax(min-content, 300px));
     justify-items: center;
     transition: 0.5s;
@@ -42,18 +39,13 @@
 
   &__border {
     display: flex;
-    max-height: 333px;
-    max-width: 333px;
+    max-height: 300px;
+    max-width: 300px;
     border: 10px rgb(250, 200, 10) solid;
     border-radius: 50%;
     background-color: black;
     overflow: hidden;
     transition: 0.5s;
-
-    @media screen and (max-width: 1300px) {
-      max-height: 300px;
-      max-width: 300px;
-    }
 
     &_disable {
       border-radius: 0;
@@ -62,6 +54,8 @@
   }
 
   &__image {
+    min-width: 300px;
+    min-height: 300px;
     max-width: 100%;
     object-fit: contain;
     pointer-events: none;

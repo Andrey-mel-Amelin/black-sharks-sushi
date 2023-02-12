@@ -1,11 +1,11 @@
 import ProductsRoutes from '../ProductsRoutes/ProductsRoutes';
 import Navigation from '../Navigation/Navigation';
 import InfoRoutes from '../InfoRoutes/InfoRoutes';
+import { MainComponent } from '../../types/components';
+import { locationForAnnouncement, locationForProducts } from '../../constants';
+import Preloader from '../Preloader/Preloader';
 
-function Main({ isLoadingProducts, products, activeButtonName, location }) {
-  const locationForAnnouncement = ['/', '/roll', '/gorroll', '/meksroll', '/nabor'];
-  const locationForProducts = ['/', '/roll', '/gorroll', '/meksroll', '/nabor', '/pizza', '/zakuska', '/souce'];
-
+function Main({ isLoadingProducts, products, activeButtonName, location }: MainComponent) {
   return (
     <main className="content">
       <Navigation activeButtonName={activeButtonName} />
@@ -16,15 +16,17 @@ function Main({ isLoadingProducts, products, activeButtonName, location }) {
           <p>РЕКОМЕНДУЕМЫЕ ТОВАРЫ</p>
         </div>
       )}
-      {locationForProducts.includes(location.pathname) && (
+
+      {locationForProducts.includes(location.pathname) && isLoadingProducts ? (
+        <Preloader />
+      ) : (
         <section className="product-list">
-          {isLoadingProducts ? (
-            <></>
-          ) : (
-            products.map((product) => <ProductsRoutes key={product._id} product={product} />)
-          )}
+          {products!.map((product) => (
+            <ProductsRoutes key={product._id} product={product} />
+          ))}
         </section>
       )}
+
       <InfoRoutes />
     </main>
   );

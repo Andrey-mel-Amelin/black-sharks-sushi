@@ -11,16 +11,11 @@
   &__logo {
     min-width: 120px;
     min-height: 120px;
-    background-image: url(../images/logo.png);
+    background-image: url(../../images/logo.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 120px;
     transition: .5s;
-
-    &:hover {
-      transition: .5s;
-      transform:scale(1.1) ;
-    }
   }
 
   &__info {

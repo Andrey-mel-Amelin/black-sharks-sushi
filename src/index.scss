@@ -1,8 +1,13 @@
 @import 'normalize.css';
 
-* {
-  outline: 1px rgba(253, 0, 0, 0.605) solid;
+html {
+  overflow-x: hidden;
+  width: 100vw;
 }
+
+/* * {
+  outline: 1px rgba(253, 0, 0, 0.605) solid;
+} */
 
 @import './styles/link.scss';
 @import './styles/button.scss';
@@ -21,3 +26,4 @@
 @import './components/Contacts/contacts.scss';
 @import './components/Footer/footer.scss';
 @import './components/ProductCart/product-cart.scss';
+@import './components/Preloader/Preloader.scss';
