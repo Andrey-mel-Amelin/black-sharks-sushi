@@ -27,7 +27,9 @@ function Navigation({ activeButtonName }) {
           style={{ visibility: isVisibility, opacity: isOpacity }}
           className="navigation__roll-list"
         >
-          <li className="navigation__roll-list-item"><div /></li>
+          <li className="navigation__roll-list-item">
+            <div />
+          </li>
           <li className="navigation__roll-list-item">
             <Link
               className={`link ${activeButtonName === '/roll' ? 'link_active link_active-for-list' : ''}`}
@@ -78,8 +80,7 @@ function Navigation({ activeButtonName }) {
       <Link className={`link ${activeButtonName === '/spec' ? 'link_active' : ''}`} to="/spec">
         СПЕЦ ПРЕДЛОЖЕНИЯ
       </Link>
-      {/* </nav> */}
-      {/* navlink */}
+    </nav>
   );
 }
 

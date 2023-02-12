@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTotals } from '../redux/cart/cartSlice';
-import ProductInCart from './ProductInCart';
+import { getTotals } from '../../redux/cart/cartSlice';
+import ProductInCart from '../ProductCart/ProductCart';
 
 function CartPopup({ productsInCart, isOpen, onClose }) {
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ function CartPopup({ productsInCart, isOpen, onClose }) {
               <ProductInCart key={product._id} product={product} />
             ))}
           </div>
-          <span className='popup__total-sum'>Итого: {cartTotalAmount} руб.</span>
+          <span className="popup__total-sum">Итого: {cartTotalAmount} руб.</span>
         </div>
       </div>
     </div>

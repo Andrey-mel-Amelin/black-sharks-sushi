@@ -19,18 +19,21 @@ const productsSlice = createSlice({
   },
   extraReducers: {
     [productsFetch.pending]: (state, action) => {
+      // перед выполнением запроса
       state.status = 'pending';
     },
     [productsFetch.fulfilled]: (state, action) => {
+      // в случае если запрос успешен добавить продукты в стейт
       state.status = 'success';
       state.items = action.payload;
     },
     [productsFetch.rejected]: (state, action) => {
+      // в случае ошибки
       state.status = 'rejected';
       state.error = action.payload;
     },
   },
 });
 
-export const { incrementProduct, decrementProduct, totalPrice } = productsSlice.actions;
+export const { incrementProduct, decrementProduct, totalPrice} = productsSlice.actions;
 export default productsSlice.reducer;

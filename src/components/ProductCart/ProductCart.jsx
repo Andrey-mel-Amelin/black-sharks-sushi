@@ -1,5 +1,5 @@
-import { useDispatch } from "react-redux";
-import { decrementProduct, deleteToCart, incrementProduct } from "../redux/cart/cartSlice";
+import { useDispatch } from 'react-redux';
+import { decrementProduct, deleteToCart, incrementProduct } from '../../redux/cart/cartSlice';
 
 function ProductInCart({ product }) {
   const dispatch = useDispatch();

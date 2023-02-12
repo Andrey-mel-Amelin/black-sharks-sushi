@@ -1,6 +1,5 @@
-import React from 'react';
 import { Route, useLocation, Routes } from 'react-router-dom';
-import Product from './Product';
+import Product from '../Product/Product';
 
 // main, roll, nabor, pizza, zakuska, souce, contacts, onas, dostavka, spec;
 function ProductsRoutes({ product }) {

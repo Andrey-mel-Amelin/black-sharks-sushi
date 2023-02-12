@@ -1,7 +1,6 @@
-import React from 'react';
-import ProductsRoutes from './ProductsRoutes';
-import Navigation from './Navigation';
-import InfoRoutes from './InfoRoutes';
+import ProductsRoutes from '../ProductsRoutes/ProductsRoutes';
+import Navigation from '../Navigation/Navigation';
+import InfoRoutes from '../InfoRoutes/InfoRoutes';
 
 function Main({ isLoadingProducts, products, activeButtonName, location }) {
   const locationForAnnouncement = ['/', '/roll', '/gorroll', '/meksroll', '/nabor'];

@@ -1,20 +1,23 @@
 @import 'normalize.css';
-/* * {
+
+* {
   outline: 1px rgba(253, 0, 0, 0.605) solid;
-} */
-@import './blocks/page.scss';
-@import './blocks/button.scss';
-@import './blocks/phone.scss';
-@import './blocks/cart.scss';
-@import './blocks/link.scss';
-@import './blocks/header.scss';
-@import './blocks/content.scss';
-@import './blocks/navigation.scss';
-@import './blocks/product.scss';
-@import './blocks/contacts.scss';
-@import './blocks/text-container.scss';
-@import './blocks/footer.scss';
-@import './blocks/nav-links.scss';
-@import './blocks/popup.scss';
-@import './blocks/product-cart.scss';
-@import './blocks/form.scss';
+}
+
+@import './styles/link.scss';
+@import './styles/button.scss';
+@import './styles/text-container.scss';
+@import './styles/nav-links.scss';
+@import './styles/popup.scss';
+@import './styles/form.scss';
+
+@import './components/App/app.scss';
+@import './components/Phone/phone.scss';
+@import './components/Cart/cart.scss';
+@import './components/Header/header.scss';
+@import './components/Main/content.scss';
+@import './components/Navigation/navigation.scss';
+@import './components/Product/product.scss';
+@import './components/Contacts/contacts.scss';
+@import './components/Footer/footer.scss';
+@import './components/ProductCart/product-cart.scss';

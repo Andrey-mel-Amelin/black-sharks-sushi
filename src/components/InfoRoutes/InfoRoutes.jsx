@@ -1,7 +1,7 @@
-import { Route, Routes } from "react-router-dom"
-import Contacts from "./Contacts"
-import Delivery from "./Delivery";
-import Info from "./Info";
+import { Route, Routes } from 'react-router-dom';
+import Contacts from '../Contacts/Contacts';
+import Delivery from '../Delivery/Delivery';
+import Info from '../Info/Info';
 
 function InfoRoutes() {
   return (
@@ -13,8 +13,7 @@ function InfoRoutes() {
   );
 }
 
-export default InfoRoutes
-
+export default InfoRoutes;
 
 /* <Route exact path="/contacts" component={contacts} />
       <Route exact path="/onas" component={onas} />
