@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Location, useLocation } from 'react-router-dom';
+import { Location, Navigate, useLocation } from 'react-router-dom';
 import { AdminContext } from '../../contexts/AdminContext';
 import Cart from '../Cart/Cart';
 import Footer from '../Footer/Footer';
@@ -11,6 +11,8 @@ import LoginPopup from '../LoginPopup/LoginPopup';
 import { useGetAllProductsQuery } from '../../utils/productsApi';
 import { useSelector } from 'react-redux';
 import { State } from '../../types/redux';
+import { allowedUrlPathname } from '../../constants';
+import { api } from '../../utils/Api';
 
 function App() {
   const { data, isLoading } = useGetAllProductsQuery();
@@ -27,6 +29,27 @@ function App() {
       setIsPopupCartOpen(false);
     }
   }, [productsInCart]);
+
+  /* image: data.image,
+        mainProduct: data.mainProduct,
+        nameProduct: data.nameProduct,
+        type: data.type,
+        desc: data.desc,
+        price: data.price, */
+
+  function createProduct(data: {
+    image: File;
+    mainProduct: boolean;
+    nameProduct: string;
+    type: string;
+    desc: string;
+    price: number;
+  }): Promise<void> {
+    return api
+      .addProducts(data)
+      .then(() => console.log('удачный запрос'))
+      .catch(() => console.log('неудачный запрос'));
+  }
 
   /*  function handleLogin(password, email) {
       return auth
@@ -53,17 +76,32 @@ function App() {
   return (
     <AdminContext.Provider value={admin}>
       <div className="app">
-        <Phone />
-        <Cart productsInCart={productsInCart} onCartPopup={setIsPopupCartOpen} />
-        <Header />
-        <Main isLoadingProducts={isLoading} products={data!} location={location} activeButtonName={activeButtonName} />
-        <Footer setIsAdminPopupOpen={setIsAdminPopupOpen} location={location} />
-        <CartPopup productsInCart={productsInCart} onClose={() => setIsPopupCartOpen(false)} isOpen={isPopupCartOpen} />
-        <LoginPopup
-          onLogin={() => {}}
-          onClose={() => setIsAdminPopupOpen(false)}
-          isOpen={isAdminPopupOpen} /* onLogin */
-        />
+        {allowedUrlPathname.includes(location.pathname) ? (
+          <>
+            <Phone />
+            <Cart productsInCart={productsInCart} onCartPopup={setIsPopupCartOpen} />
+            <Header />
+            <Main
+              isLoadingProducts={isLoading}
+              products={data!}
+              location={location}
+              activeButtonName={activeButtonName}
+            />
+            <Footer setIsAdminPopupOpen={setIsAdminPopupOpen} location={location} />
+            <CartPopup
+              productsInCart={productsInCart}
+              onClose={() => setIsPopupCartOpen(false)}
+              isOpen={isPopupCartOpen}
+            />
+            <LoginPopup
+              onLogin={() => {}}
+              onClose={() => setIsAdminPopupOpen(false)}
+              isOpen={isAdminPopupOpen} /* onLogin */
+            />
+          </>
+        ) : (
+          <Navigate to="/" />
+        )}
       </div>
     </AdminContext.Provider>
   );

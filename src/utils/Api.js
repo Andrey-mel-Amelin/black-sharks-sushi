@@ -1,3 +1,5 @@
+import { backendUrl } from "../constants";
+
 class Api {
   constructor(baseUrl, headers) {
     this._baseUrl = baseUrl;
@@ -55,14 +57,18 @@ class Api {
     return this._postFetch(
       '/products',
       JSON.stringify({
-        name: data.name,
-        link: data.link,
+        image: data.image,
+        mainProduct: data.mainProduct,
+        nameProduct: data.nameProduct,
+        type: data.type,
+        desc: data.desc,
+        price: data.price,
       })
     );
   }
 }
 
-export const api = new Api('http://localhost:3001/api', {
+export const api = new Api(backendUrl.deploy, {
   'Content-Type': 'application/json',
   'credentials': 'include',
 });

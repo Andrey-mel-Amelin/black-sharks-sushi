@@ -38,10 +38,10 @@ function Header() {
       <div className="header__logo"></div>
       <div className="header__info">
         <a className="header__info link" href="tel:+79618886569">
-          +7-961-888-65-69
+          +7-999-999-99-99
         </a>
         <a className="header__info link" href="mailto:BLACKSHARKS70@BK.RU">
-          BLACKSHARKS70@BK.RU
+          MAIL@MAIL.RU
         </a>
       </div>
     </div>

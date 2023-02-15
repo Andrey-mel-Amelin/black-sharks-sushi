@@ -17,15 +17,16 @@ function Main({ isLoadingProducts, products, activeButtonName, location }: MainC
         </div>
       )}
 
-      {locationForProducts.includes(location.pathname) && isLoadingProducts ? (
-        <Preloader />
-      ) : (
-        <section className="product-list">
-          {products!.map((product) => (
-            <ProductsRoutes key={product._id} product={product} />
-          ))}
-        </section>
-      )}
+      {locationForProducts.includes(location.pathname) &&
+        (isLoadingProducts ? (
+          <Preloader />
+        ) : (
+          <section className="product-list">
+            {products!.map((product) => (
+              <ProductsRoutes key={product._id} product={product} />
+            ))}
+          </section>
+        ))}
 
       <InfoRoutes />
     </main>

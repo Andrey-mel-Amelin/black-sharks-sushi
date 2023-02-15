@@ -1,51 +1,79 @@
 .product-list {
   display: grid;
+  grid-template: 1fr / repeat(auto-fill, minmax(auto, 250px));
+  justify-items: center;
   justify-content: center;
-  height: max-content;
-  width: 100%;
-  grid-template: repeat(auto-fill, minmax(min-content, 330px)) / repeat(auto-fill, minmax(min-content, 373px));
-  grid-auto-flow: column;
-  padding-top: 50px;
+  min-height: max-content;
+  max-width: 100%;
+  padding: 45px;
   gap: 20px;
 
+  @media screen and (max-width: 1023px) {
+    padding: 0;
+    gap: 5px;
+  }
+
+  @media screen and (max-width: 767px) {
+    grid-template: 1fr / repeat(auto-fill, minmax(auto, 170px));
+    padding: 0;
+    gap: 5px;
+  }
+
   &__item {
+    background-color: #131313;
     display: grid;
-    min-width: 373px;
-    grid-template-rows: repeat(auto-fill, minmax(min-content, 300px));
+    grid-template: repeat(auto-fill, minmax(auto, 230px)) / repeat(auto-fill, minmax(auto, 230px));
     justify-items: center;
-    transition: 0.5s;
+    align-items: center;
     box-sizing: border-box;
     padding: 10px;
     gap: 20px;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 24px;
+    transition: 0.5s;
 
-    &:hover {
-      background-color: rgb(25, 25, 25);
-      transform: scale(1.03);
-      transition: 0.5s;
-      box-shadow: 0 0 20px 10px rgb(30, 30, 30);
+    @media screen and (max-width: 1023px) {
+      grid-template: repeat(auto-fill, minmax(auto, 230px)) / repeat(auto-fill, minmax(auto, 250px));
+      gap: 10px;
+    }
 
-      .product-list__border {
-        background-color: rgb(25, 25, 25);
+    @media screen and (max-width: 767px) {
+      padding: 5px;
+      border-radius: 18px;
+      grid-template: repeat(auto-fill, minmax(auto, 160px)) / repeat(auto-fill, minmax(auto, 170px));
+    }
+
+    @media screen and (min-width: 1023px) {
+      &:hover {
+        transform: scale(1.01);
+        transition: 0.5s;
+        box-shadow: 0 0 5px 2px rgb(250, 200, 10);
+
+        .product-list__border {
+          background-color: rgb(25, 25, 25);
+        }
       }
     }
 
     &:active {
-      transition: .1s;
+      transition: 0.1s;
       transform: scale(0.99);
     }
   }
 
   &__border {
+    max-width: 80%;
+    max-height: 80%;
     display: flex;
-    max-height: 300px;
-    max-width: 300px;
-    border: 10px rgb(250, 200, 10) solid;
+    border: 5px rgb(250, 200, 10) solid;
     border-radius: 50%;
     background-color: black;
     overflow: hidden;
     transition: 0.5s;
+
+    @media screen and (max-width: 540px) {
+      border: 3px rgb(250, 200, 10) solid;
+    }
 
     &_disable {
       border-radius: 0;
@@ -54,23 +82,28 @@
   }
 
   &__image {
-    min-width: 300px;
-    min-height: 300px;
     max-width: 100%;
-    object-fit: contain;
+    object-fit: cover;
     pointer-events: none;
+    background-color: #131313;
   }
 
   &__button {
+    font-size: 13px;
     border-radius: 8px;
     padding: 0 10px;
     border: none;
     color: black;
     cursor: pointer;
-    width: max-content;
-    height: 30px;
+    min-width: max-content;
+    min-height: 30px;
     background-color: rgb(250, 200, 10);
     transition: 0.5s;
+
+    @media screen and (max-width: 767px) {
+      font-size: 10px;
+      min-height: 20px;
+    }
 
     &_inactive {
       background-color: rgb(255, 30, 30);
@@ -78,14 +111,37 @@
   }
 
   &__name {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    min-height: 40px;
+    font-weight: normal;
+    font-size: 17px;
     margin: 0;
+
+    @media screen and (max-width: 767px) {
+      font-size: 13px;
+    }
   }
 
   &__about {
+    display: flex;
+    align-items: center;
+    min-height: 33px;
+    font-size: 13px;
     margin: 0;
     text-align: center;
+
+    @media screen and (max-width: 767px) {
+      font-size: 10px;
+    }
   }
 
   &__price {
+    font-size: 13px;
+
+    @media screen and (max-width: 767px) {
+      font-size: 10px;
+    }
   }
 }

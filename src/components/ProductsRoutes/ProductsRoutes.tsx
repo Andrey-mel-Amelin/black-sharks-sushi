@@ -4,32 +4,32 @@ import Product from '../Product/Product';
 
 function ProductsRoutes({ product }: ProductsRoutesComponent) {
   return (
-      <Routes>
-        <Route
-          path={product.mainProduct === true ? `/` : undefined}
-          element={
-            <Product
-              product={product}
-              name={product.nameProduct}
-              about={product.about}
-              price={product.price}
-              type={product.type}
-            />
-          }
-        />
-        <Route
-          path={`/${product.type}`}
-          element={
-            <Product
-              product={product}
-              name={product.nameProduct}
-              about={product.about}
-              price={product.price}
-              type={product.type}
-            />
-          }
-        />
-      </Routes>
+    <Routes>
+      <Route
+        path={product.mainProduct === true ? `/` : undefined}
+        element={
+          <Product
+            product={product}
+            name={product.nameProduct}
+            desc={product.desc}
+            price={product.price}
+            type={product.type}
+          />
+        }
+      />
+      <Route
+        path={`/${product.type}`}
+        element={
+          <Product
+            product={product}
+            name={product.nameProduct}
+            desc={product.desc}
+            price={product.price}
+            type={product.type}
+          />
+        }
+      />
+    </Routes>
   );
 }
 

@@ -1,14 +1,12 @@
 type Product = {
-  about: string;
-  createdAt: string;
-  image: { path: string };
+  _id: string;
   mainProduct: boolean;
   nameProduct: string;
-  price: number;
-  quantity: number;
-  totalPrice: number;
+  desc: string;
   type: string;
-  _id: string;
+  price: number;
+  image: { path: string };
+  createdAt: string;
 };
 
 type State = {
