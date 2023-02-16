@@ -14,18 +14,9 @@
     gap: 10px;
   }
 
-  &__announcement {
-    width: 45%;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-
-    @media screen and (max-width: 767px) {
-      width: calc(100% - 20px);
-    }
-
-    p:nth-child(1) {
-      font-weight: bold;
-    }
+  &__recommend {
+    margin: 50px 0 0;
+    font-weight: normal;
+    font-size: 25px;
   }
 }

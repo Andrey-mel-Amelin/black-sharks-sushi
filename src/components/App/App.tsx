@@ -24,6 +24,7 @@ function App() {
   const [admin, setAdmin] = useState({});
   const productsInCart = useSelector((state: State) => state.cart.cartItems);
 
+  // закрыть опустошенную корзину
   useEffect(() => {
     if (productsInCart.length === 0) {
       setIsPopupCartOpen(false);

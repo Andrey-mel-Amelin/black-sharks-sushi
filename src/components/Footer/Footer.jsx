@@ -18,28 +18,22 @@ function Footer({ setIsAdminPopupOpen, location }) {
     <footer className="footer">
       {location.pathname === '/' && (
         <>
-          <div className="footer__text">
-            <span>Контакты</span>
-            <p>Доставка суши, роллов, пицца в городе Северск.</p>
-            <p>Прием заявок ПН-ЧТ: с 12:00 до 22:00, ПТ-СБ: с 12:00 до 23:00 ВС: 12:00 до 22:00</p>
-            <p>Адрес: г. Северск ул.Лесная 1А.стр5 (2 этаж)</p>
-          </div>
           <ul className="footer__info-list">
-            <li className="footer__info-list-item footer__info-item_contact">
-              <p>
-                <span>Контакты</span>+7-961-888-65-69
-                <br /> blacksharks70@bk.ru
-              </p>
-            </li>
-            <li className="footer__info-list-item footer__info-item_adress">
-              <p>
-                <span>Адрес</span>г. Северск ул.Лесная 1А.стр5 (2 этаж) вход с торца
-              </p>
-            </li>
             <li className="footer__info-list-item footer__info-item_time-work">
               <p>
                 <span>Время работы</span>Прием заявок: <br /> ПН-ЧТ: с 12:00 до 22:00 <br /> ПТ-СБ: с 12:00 до 23:00{' '}
                 <br /> ВС: 12:00 до 22:00
+              </p>
+            </li>
+            <li className="footer__info-list-item footer__info-item_contact">
+              <p>
+                <span>Контакты</span>+7-999-999-99-99
+                <br /> MAIL@MAIL.ru
+              </p>
+            </li>
+            <li className="footer__info-list-item footer__info-item_adress">
+              <p>
+                <span>Адрес</span>г. Москва ул.Кремль 1 (парадный вход)
               </p>
             </li>
           </ul>

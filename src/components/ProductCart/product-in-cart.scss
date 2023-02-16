@@ -1,0 +1,145 @@
+.product-in-cart {
+  display: flex;
+  max-height: 100px;
+  align-items: center;
+
+  @media screen and(max-width: 767px) {
+    display: grid;
+    gap: 0 10px;
+    grid-template: repeat(2, 1fr) / max-content 1fr max-content;
+    grid-template-areas: 'image name price' 'image buttons delete';
+  }
+
+  &__border {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 30px;
+    border: 2px rgb(250, 200, 10) solid;
+    background-color: rgb(0, 0, 0);
+    overflow: hidden;
+    transition: 0.5s;
+    grid-area: image;
+
+    @media screen and (max-width: 767px) {
+      max-width: 70px;
+      max-height: 70px;
+      border-radius: 10px;
+    }
+  }
+
+  &__image {
+    object-fit: cover;
+    min-height: 100px;
+  }
+
+  &__name {
+    text-overflow: ellipsis;
+    margin: 0 10px;
+    font-size: 25px;
+    overflow: hidden;
+    grid-area: name;
+
+    @media screen and (max-width: 767px) {
+      font-size: 15px;
+      margin: 0;
+    }
+  }
+
+  &__container-for-quantity {
+    display: flex;
+    background-color: #dbdbdb;
+    border-radius: 9px;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 0 auto;
+    grid-area: buttons;
+
+    @media screen and (max-width: 767px) {
+      margin: 0;
+      justify-self: flex-start;
+    }
+  }
+
+  &__button {
+    min-width: 40px;
+    min-height: 40px;
+    display: flex;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: 0.05s;
+    background-image: url(../../images/sign-type-plus.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40px;
+    border-radius: 9px 0 0 9px;
+    transition: 0.1s;
+
+    @media screen and (max-width: 767px) {
+      min-width: 25px;
+      min-height: 25px;
+      background-size: 25px;
+    }
+
+    &:active {
+      transition: 0.1s;
+      opacity: 1;
+      background-size: 35px;
+
+      @media screen and (max-width: 767px) {
+        background-size: 20px;
+        background-color: #c0c0c0;
+      }
+    }
+
+    @media screen and (min-width: 768px) {
+      &:hover {
+        background-color: #c0c0c0;
+      }
+    }
+
+    &_type_minus {
+      background-image: url(../../images/sign-type-minus.svg);
+      border-radius: 0 9px 9px 0;
+    }
+
+    &_type_delete {
+      background-image: url(../../images/sign-type-delete.svg);
+      min-width: 30px;
+      min-height: 30px;
+      background-size: 20px;
+      border-radius: 50%;
+      grid-area: delete;
+
+      @media screen and (max-width: 768px) {
+        background-color: #dbdbdb;
+        max-width: 30px;
+        justify-self: center;
+      }
+    }
+  }
+
+  &__quantity {
+    min-width: 20px;
+    text-align: center;
+
+    @media screen and (max-width: 767px) {
+      font-size: 12px;
+    }
+  }
+
+  &__total-price-product {
+    margin: 0 10px;
+    text-align: center;
+    min-width: 80px;
+    grid-area: price;
+
+    @media screen and (max-width: 767px) {
+      margin: 0;
+    }
+  }
+}

@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function Navigation({ activeButtonName }) {
+function Navigation({ location, activeButtonName }) {
   const [isVisibility, setIsVisibility] = useState('hidden');
   const [isOpacity, setIsOpacity] = useState(0);
 
@@ -14,6 +14,13 @@ function Navigation({ activeButtonName }) {
       setIsOpacity(0);
     }
   }
+
+  useEffect(() => {
+    setIsVisibility('hidden');
+    setIsOpacity(0);
+
+    console.log(1)
+  }, [location.pathname])
 
   return (
     <nav className="navigation">

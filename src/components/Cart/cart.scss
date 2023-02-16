@@ -11,7 +11,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  right: 20px;
+  left: calc(100% - 125px);
   top: 50px;
   cursor: pointer;
   transition: 0.5s;
@@ -23,6 +23,7 @@
     min-width: 60px;
     min-height: 60px;
     background-size: 35px;
+    left: calc(100% - 75px);
   }
 
   &:hover {

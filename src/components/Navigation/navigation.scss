@@ -28,6 +28,10 @@
     list-style: none;
     position: absolute;
 
+    @media screen and(max-width: 767px) {
+      background-color: black;
+    }
+
     &-item {
       align-items: center;
       justify-content: center;

@@ -4,17 +4,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.397);
+  min-height: 100vh;
+  min-width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
   transition: 0.5s;
   position: fixed;
+  left: 0;
 
   &_active {
     transition: 0.5s;
     opacity: 1;
     visibility: visible;
-    z-index: 2;
+    z-index: 100;
 
     .popup__outer-container {
       transition: 0.5s;
@@ -26,9 +27,9 @@
     position: absolute;
     right: -40px;
     top: -40px;
-    background-image: url(../images/close-btn.svg);
+    background-image: url(../images/popup-close.svg);
     background-repeat: no-repeat;
-    background-size: 32px 32px;
+    background-size: 32px;
     border: none;
     font: inherit;
     color: inherit;
@@ -44,7 +45,7 @@
     }
 
     @media screen and (max-width: 767px) {
-      left: 0;
+      left: 15px;
       top: -35px;
       background-size: 20px 20px;
       width: 20px;
@@ -56,6 +57,7 @@
     transition: 1s;
     transform: translateY(-200%);
     display: flex;
+    justify-content: center;
     position: relative;
     max-height: 80vh;
 
@@ -69,7 +71,6 @@
   }
 
   &__inner-container {
-    min-width: 649px;
     overflow-y: auto;
     padding: 30px;
     display: flex;
@@ -82,24 +83,57 @@
     @media screen and (max-width: 767px) {
       gap: 0;
       padding: 10px;
-      min-width: 270px;
+      max-width: 370px;
+    }
+
+    @media screen and (max-width: 400px) {
+      gap: 0;
+      padding: 10px;
+      max-width: calc(100% - 30px);
     }
   }
 
   &__text {
     font-size: 30px;
     font-weight: 600;
+
+    @media screen and (max-width: 767px) {
+      font-size: 25px;
+    }
   }
 
   &__products-list {
     display: flex;
     flex-direction: column;
-    max-width: 649px;
+    max-width: 100%;
     gap: 30px;
     flex: 1;
 
     @media screen and (max-width: 767px) {
-      max-width: 279px;
+      margin-top: 10px;
+      gap: 15px;
+    }
+  }
+
+  &__announcement {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+
+    p:nth-child(1) {
+      font-weight: bold;
+
+      @media screen and (max-width: 767px) {
+        font-size: 14px;
+      }
+    }
+
+    p:nth-child(2) {
+      margin: 0;
+
+      @media screen and (max-width: 767px) {
+        font-size: 14px;
+      }
     }
   }
 

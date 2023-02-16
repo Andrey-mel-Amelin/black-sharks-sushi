@@ -1,12 +1,13 @@
 @import 'normalize.css';
 
 html {
+  overflow-y: scroll;
   overflow-x: hidden;
-  width: 100vw;
   max-width: 1280px;
   min-width: 320px;
   background-color: black;
   margin: 0 auto;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* * {
@@ -14,7 +15,6 @@ html {
 } */
 
 @import './styles/link.scss';
-@import './styles/button.scss';
 @import './styles/text-container.scss';
 @import './styles/nav-links.scss';
 @import './styles/popup.scss';
@@ -29,5 +29,5 @@ html {
 @import './components/Product/product.scss';
 @import './components/Contacts/contacts.scss';
 @import './components/Footer/footer.scss';
-@import './components/ProductCart/product-cart.scss';
+@import './components/ProductCart/product-in-cart.scss';
 @import './components/Preloader/Preloader.scss';
