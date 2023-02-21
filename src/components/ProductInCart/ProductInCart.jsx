@@ -1,8 +1,31 @@
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { decrementProduct, deleteToCart, incrementProduct } from '../../redux/cart/cartSlice';
 
 function ProductInCart({ product }) {
   const dispatch = useDispatch();
+
+  const [count, setCount] = useState(5);
+  const [toogleDeleteProduct, setToogleDeleteProduct] = useState(false);
+
+  function handleToggleDeleteProduct() {
+    setToogleDeleteProduct((active) => !active);
+  }
+
+  useEffect(() => {
+    if (toogleDeleteProduct === true) {
+      const timer = count > 0 && setInterval(() => setCount((count) => count - 1), 1000);
+      return () => clearInterval(timer);
+    } else {
+      setCount(5);
+    }
+  }, [count, toogleDeleteProduct]);
+
+  useEffect(() => {
+    if (count === 0) {
+      dispatch(deleteToCart(product));
+    }
+  }, [count, product, dispatch]);
 
   return (
     <div className="product-in-cart">
@@ -20,9 +43,13 @@ function ProductInCart({ product }) {
       </div>
       <span className="product-in-cart__total-price-product">{product.cartQuantity * product.price} руб.</span>
       <button
-        onClick={() => dispatch(deleteToCart(product))}
-        className="product-in-cart__button product-in-cart__button_type_delete"
-      />
+        onClick={handleToggleDeleteProduct}
+        className={`product-in-cart__button ${
+          toogleDeleteProduct ? 'product-in-cart__button_type_count' : 'product-in-cart__button_type_delete'
+        }`}
+      >
+        {toogleDeleteProduct && count}
+      </button>
     </div>
   );
 }

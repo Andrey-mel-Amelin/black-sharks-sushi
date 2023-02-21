@@ -2,18 +2,16 @@
   margin: 0;
   padding-top: 30px;
   max-height: 150px;
-  width: calc(100% - 100px);
-  align-self: center;
-  display: flex;
-
-  justify-content: space-around;
+  min-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
 
   @media screen and (max-width: 767px) {
     max-height: max-content;
     padding-top: 10px;
     gap: 10px;
-    flex-direction: column;
+    grid-template: repeat(3, max-content) / 1fr;
   }
 
   &__logo {
@@ -28,7 +26,6 @@
 
   &__info {
     display: flex;
-    min-width: max-content;
     flex-direction: column;
     align-items: center;
     gap: 10px;

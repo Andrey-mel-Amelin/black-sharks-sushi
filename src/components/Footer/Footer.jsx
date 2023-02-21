@@ -1,19 +1,4 @@
-import React, { useEffect, useState } from 'react';
-
-function Footer({ setIsAdminPopupOpen, location }) {
-  const [secret, setSecret] = useState('');
-
-  useEffect(() => {
-    if (secret === 'adminsecret') {
-      setIsAdminPopupOpen(true);
-    }
-  }, [secret]);
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    setSecret(e.target[0].value);
-  }
-
+function Footer({ location, onLogin }) {
   return (
     <footer className="footer">
       {location.pathname === '/' && (
@@ -42,10 +27,10 @@ function Footer({ setIsAdminPopupOpen, location }) {
 
       <div className="footer__box">
         <p>
-          © Основано в 2019 BlackSharks{' '}
-          <form onSubmit={handleSubmit}>
-            <input className="footer__input" type="text" />
-          </form>
+          <button className="footer__button" onClick={onLogin}>
+            ©
+          </button>{' '}
+          Основано в 2019 BlackSharks
         </p>
         <nav className="nav-links">
           <a rel="noreferrer" target="_blank" className="link link_source link_vk" href="https://vk.com/blacksharks70">

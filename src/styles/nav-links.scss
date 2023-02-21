@@ -1,6 +1,7 @@
 .nav-links {
   display: flex;
   min-width: 160px;
+  max-height: 32px;
   justify-content: space-between;
-  justify-self: center
+  justify-self: center;
 }

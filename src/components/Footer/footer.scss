@@ -101,16 +101,14 @@
     }
 
     p {
-      cursor: default;
       margin: 0;
     }
   }
 
-  &__input {
+  &__button {
     background-color: transparent;
-    border: 0;
-    width: 10px;
-    cursor: default;
-    color: transparent;
+    border: none;
+    color: inherit;
+    padding: 0;
   }
 }

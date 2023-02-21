@@ -4,10 +4,11 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  align-items: center;
+  align-items: stretch;
+  gap: 10px;
 
   &__title {
-    margin: 0;
+    margin: 0 0 20px;
     color: #000;
     font-weight: 900;
     font-size: 24px;
@@ -41,17 +42,37 @@
     }
   }
 
+  &__label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   &__input {
     min-width: 358px;
     display: flex;
     border: 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-    height: 31px;
+    min-height: 31px;
     font-size: 14px;
     line-height: 17px;
 
-    &:first-of-type {
-      margin: 41px 0 23px;
+    &_for_add-product {
+      border: none;
+      align-items: center;
+      padding-left: 10px;
+      border-radius: 5px;
+      background-color: #e6e6e6;
+      color: black;
+    }
+
+    &_type_file {
+      padding: 10px 10px 0;
+    }
+
+    &_for_label {
+      min-width: 30px;
+      min-width: 30px;
     }
   }
 }

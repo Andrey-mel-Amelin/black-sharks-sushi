@@ -1,4 +1,4 @@
-import { backendUrl } from "../constants";
+import { backendUrl } from '../constants';
 
 class Api {
   constructor(baseUrl, headers) {
@@ -6,69 +6,84 @@ class Api {
     this._headers = headers;
   }
 
-  _getResponseData(res) {
-    if (!res.ok) {
-      return Promise.reject(`Ошибка: ${res.status}`);
-    }
-    return res.json();
+  _fetch({ url, method = 'POST', data }) {
+    return fetch(`${this._baseUrl}${url}`, {
+      method: method,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      mode: 'cors',
+      credentials: 'include',
+      ...(!!data && { body: JSON.stringify(data) }),
+    }).then((res) => {
+      if (!res.ok) {
+        return Promise.reject({ error: `Ошибка: ${res.status}`, message: res });
+      }
+      return res.json();
+    });
   }
 
-  _getFetch(pathUrl) {
-    return fetch(`${this._baseUrl}${pathUrl}`, {
-      headers: this._headers,
-    }).then((res) => this._getResponseData(res));
-  }
-
-  _patchFetch(pathUrl, bodyConstructor) {
-    return fetch(`${this._baseUrl}${pathUrl}`, {
-      method: 'PATCH',
-      headers: this._headers,
-      body: bodyConstructor,
-    }).then((res) => this._getResponseData(res));
-  }
-
-  _postFetch(pathUrl, bodyConstructor) {
-    return fetch(`${this._baseUrl}${pathUrl}`, {
+  _fetchFormData({ url, product }) {
+    return fetch(`${this._baseUrl}${url}`, {
       method: 'POST',
-      headers: this._headers,
-      body: bodyConstructor,
-    }).then((res) => this._getResponseData(res));
-  }
-
-  _deleteFetch(pathUrl) {
-    return fetch(`${this._baseUrl}${pathUrl}`, {
-      method: 'DELETE',
-      headers: this._headers,
-    }).then((res) => this._getResponseData(res));
-  }
-
-  _putFetch(pathUrl) {
-    return fetch(`${this._baseUrl}${pathUrl}`, {
-      method: 'PUT',
-      headers: this._headers,
-    }).then((res) => this._getResponseData(res));
+      mode: 'cors',
+      credentials: 'include',
+      ...(!!product && { body: product }),
+    }).then((res) => {
+      if (!res.ok) {
+        return Promise.reject({ error: `Ошибка: ${res.status}`, message: res });
+      }
+      return res.json();
+    });
   }
 
   getProducts() {
-    return this._getFetch('/products');
+    return this._fetch({
+      url: 'products',
+      method: 'GET',
+    });
   }
 
   addProducts(data) {
-    return this._postFetch(
-      '/products',
-      JSON.stringify({
-        image: data.image,
-        mainProduct: data.mainProduct,
-        nameProduct: data.nameProduct,
-        type: data.type,
-        desc: data.desc,
-        price: data.price,
-      })
-    );
+    const formData = new FormData();
+    formData.append('image', data.image);
+    formData.append('mainProduct', data.mainProduct);
+    formData.append('nameProduct', data.nameProduct);
+    formData.append('type', data.type);
+    formData.append('desc', data.desc);
+    formData.append('price', data.price);
+
+    return this._fetchFormData({
+      url: 'products',
+      product: formData,
+    });
+  }
+
+  loginAdmin(data) {
+    return this._fetch({
+      url: 'admin/login',
+      data: {
+        name: data.name,
+        password: data.password,
+      },
+    });
+  }
+
+  checkTokenAdmin() {
+    return this._fetch({
+      url: 'admin/login',
+      method: 'GET',
+    });
+  }
+
+  logout() {
+    return this._fetch({
+      url: 'admin/logout',
+      method: 'DELETE',
+    });
   }
 }
 
-export const api = new Api(backendUrl.deploy, {
+export const api = new Api(`${backendUrl.deploy}/api/`, {
   'Content-Type': 'application/json',
-  'credentials': 'include',
 });

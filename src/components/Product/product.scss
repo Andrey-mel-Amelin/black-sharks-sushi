@@ -45,9 +45,8 @@
 
     @media screen and (min-width: 1023px) {
       &:hover {
-        transform: scale(1.01);
+        transform: scale(1.02);
         transition: 0.5s;
-        box-shadow: 0 0 5px 2px rgb(250, 200, 10);
 
         .product-list__border {
           background-color: rgb(25, 25, 25);

@@ -19,4 +19,25 @@
     font-weight: normal;
     font-size: 25px;
   }
+
+  &__popup-open-button {
+    background-color: transparent;
+    background-image: url(../../images/sign-type-plus-white.svg);
+    background-size: 50px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px white solid;
+    border-radius: 8px;
+    margin-top: 40px;
+    padding: 0;
+    min-width: 170px;
+    min-height: 40px;
+    cursor: pointer;
+    transition: 0.1s;
+
+    &:active {
+      transition: 0.1s;
+      transform: scale(0.98);
+    }
+  }
 }

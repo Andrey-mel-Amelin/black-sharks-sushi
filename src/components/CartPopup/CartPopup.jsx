@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getTotals } from '../../redux/cart/cartSlice';
-import ProductInCart from '../ProductCart/ProductInCart';
+import ProductInCart from '../ProductInCart/ProductInCart';
 
 function CartPopup({ productsInCart, isOpen, onClose }) {
   const dispatch = useDispatch();
@@ -30,7 +31,13 @@ function CartPopup({ productsInCart, isOpen, onClose }) {
           </div>
           <div className="popup__announcement">
             <p>ДОРОГИЕ КЛИЕНТЫ !</p>
-            <p>Соевый соус, васаби и имбирь не входит в наборы. Заказать дополнительно можно в разделе соуса.</p>
+            <p>
+              Соевый соус, васаби и имбирь не входит в наборы. Заказать дополнительно можно в разделе{' '}
+              <Link to="/souce" onClick={onClose}>
+                соуса
+              </Link>
+              .
+            </p>
           </div>
           <span className="popup__total-sum">Итого: {cartTotalAmount} руб.</span>
         </div>
