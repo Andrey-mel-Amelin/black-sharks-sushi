@@ -23,6 +23,7 @@ function App() {
   const navigate: NavigateFunction = useNavigate(); // доступ к навигации по приложению
 
   const { data, isLoading } = useGetAllProductsQuery(); // массив товаров с бэкенда / статус загрузки
+  const dataForReverse = data ? [...data] : []; // копия массива для реверса
   const productsInCart = useSelector((state: State) => state.cart.cartItems); // массив товаров в корзине
 
   const [isPopupCartOpen, setIsPopupCartOpen] = useState(false); // попап с корзиной товаров
@@ -80,13 +81,6 @@ function App() {
       setIsPopupCartOpen(false);
     }
   }, [productsInCart]);
-
-  /* image: data.image,
-        mainProduct: data.mainProduct,
-        nameProduct: data.nameProduct,
-        type: data.type,
-        desc: data.desc,
-        price: data.price, */
 
   function createProduct(data: ProductForApi): Promise<void> {
     return api
@@ -148,7 +142,7 @@ function App() {
               adminLogged={adminLogged}
               addProductPopupOpen={() => setIsAddProductPopupOpen(true)}
               isLoadingProducts={isLoading}
-              products={data ? data : []}
+              products={dataForReverse.reverse()}
               location={location}
               activeButtonName={activeButtonName}
             />
