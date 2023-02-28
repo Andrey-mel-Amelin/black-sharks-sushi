@@ -14,15 +14,15 @@ function CartPopup({ productsInCart, isOpen, onClose }) {
   }, [dispatch, productsInCart]);
 
   return (
-    <div onClick={onClose} className={`popup ${isOpen ? 'popup_active' : ''}`}>
+    <div onMouseDown={onClose} className={`popup ${isOpen ? 'popup_active' : ''}`}>
       <div
-        onClick={(evt) => {
+        onMouseDown={(evt) => {
           evt.stopPropagation();
         }}
         className="popup__outer-container"
       >
         <div className="popup__inner-container">
-          <button className="popup__close-btn" onClick={onClose} />
+          <button className="popup__close-btn" onMouseDown={onClose} />
           <span className="popup__text">Ваш заказ:</span>
           <div className="popup__products-list">
             {productsInCart.map((product) => (
@@ -33,7 +33,7 @@ function CartPopup({ productsInCart, isOpen, onClose }) {
             <p>ДОРОГИЕ КЛИЕНТЫ !</p>
             <p>
               Соевый соус, васаби и имбирь не входит в наборы. Заказать дополнительно можно в разделе{' '}
-              <Link to="/souce" onClick={onClose}>
+              <Link to="/souce" onMouseDown={onClose}>
                 соуса
               </Link>
               .

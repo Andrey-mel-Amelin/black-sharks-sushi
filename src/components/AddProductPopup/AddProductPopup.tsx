@@ -23,15 +23,15 @@ function AddProductPopup({ onClose, isOpen, createProduct }: AddProductPopupComp
   }
 
   return (
-    <div onClick={onClose} className={`popup ${isOpen ? 'popup_active' : ''}`}>
+    <div onMouseDown={onClose} className={`popup ${isOpen ? 'popup_active' : ''}`}>
       <div
-        onClick={(evt) => {
+        onMouseDown={(evt) => {
           evt.stopPropagation();
         }}
         className="popup__outer-container popup__outer-container_for_authorize"
       >
         <div className="popup__inner-container">
-          <button className="popup__close-btn" onClick={onClose} />
+          <button className="popup__close-btn" onMouseDown={onClose} />
           <form encType="multipart/form-data" className="form" onSubmit={handleSubmit}>
             <p className="form__title">Добавить товар</p>
             <input
