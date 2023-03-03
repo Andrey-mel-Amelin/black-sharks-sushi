@@ -1,33 +1,26 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function Navigation({ activeButtonName }) {
+function Navigation({ location, activeButtonName }) {
   const [isVisibility, setIsVisibility] = useState('hidden');
   const [isOpacity, setIsOpacity] = useState(0);
-  const [menuActivity, setMenuActivity] = useState(false);
-
-  function handleToogleRollMenu() {
-    setMenuActivity((active) => !active);
-  }
-
-  useEffect(() => {
-    if (menuActivity === true) {
-      setIsVisibility('visible');
-      setIsOpacity(1);
-    } else {
-      setTimeout(() => {
-        setIsVisibility('hidden');
-        setIsOpacity(0);
-      }, 500);
-    }
-  }, [menuActivity]);
 
   return (
     <nav className="navigation">
       <Link className={`link ${activeButtonName === '/' ? 'link_active' : ''}`} to="/">
         ГЛАВНАЯ
       </Link>
-      <div onClick={handleToogleRollMenu} className="navigation__roll">
+      <div
+        onMouseDown={() => {
+          setIsVisibility('visible');
+          setIsOpacity(1);
+        }}
+        onMouseLeave={() => {
+          setIsVisibility('hidden');
+          setIsOpacity(0);
+        }}
+        className="navigation__roll"
+      >
         <span>РОЛЛЫ</span>
         <ul style={{ visibility: isVisibility, opacity: isOpacity }} className="navigation__roll-list">
           <li className="navigation__roll-list-item">

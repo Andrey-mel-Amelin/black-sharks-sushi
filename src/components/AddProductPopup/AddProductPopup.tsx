@@ -60,7 +60,7 @@ function AddProductPopup({ onClose, isOpen, onCreateProduct }: AddProductPopupCo
                 onChange={handleChange}
               />
             </label>
-            <select onChange={handleChange} name="type" id="type">
+            <select className='form__select' onChange={handleChange} name="type" id="type">
               <option value="">-Выберите тип продукта-</option>
               <option value="roll">Роллы</option>
               <option value="gorroll">Горячие роллы</option>
@@ -88,7 +88,7 @@ function AddProductPopup({ onClose, isOpen, onCreateProduct }: AddProductPopupCo
               name="price"
               type="number"
               min="0"
-              value={productData.price}
+              value={productData.price || ''}
               onChange={handleChange}
             />
             <input

@@ -23,6 +23,7 @@ function Product({ product, name, desc, price, type, onDeleteProduct }) {
   return (
     <article onClick={handleClick} className="product-list__item">
       <button className="product-list__delete-button" onClick={(e) => handleDeleteProduct(e)} />
+      <span className="product-list__announcement">Удаление для администратора:</span>
       <div className={type !== 'pizza' ? 'product-list__border' : 'product-list__border product-list__border_disable'}>
         <img className="product-list__image" src={product.image.path} alt={name} />
       </div>

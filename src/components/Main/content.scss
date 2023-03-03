@@ -33,7 +33,7 @@
     background-position: center;
     border: 1px white solid;
     border-radius: 8px;
-    margin-top: 40px;
+    margin-top: 10px;
     padding: 0;
     min-width: 170px;
     min-height: 40px;
@@ -44,5 +44,11 @@
       transition: 0.1s;
       transform: scale(0.98);
     }
+  }
+
+  &__announcement {
+    display: flex;
+    font-size: 12px;
+    margin-top: 40px;
   }
 }

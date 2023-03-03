@@ -16,8 +16,9 @@ function Main({
 }: MainComponent) {
   return (
     <main className="content">
-      <Navigation activeButtonName={activeButtonName} />
+      <Navigation location={location} activeButtonName={activeButtonName} />
       {location.pathname === '/' && <h3 className="content__recommend">Рекомендуемые товары</h3>}
+      <span className="content__announcement">Добавление продукта на сервер (для администратора).</span>
       <button className="content__popup-open-button" onClick={addProductPopupOpen} />
       {locationForProducts.includes(location.pathname) &&
         (isLoadingProducts ? (

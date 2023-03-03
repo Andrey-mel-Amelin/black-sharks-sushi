@@ -11,6 +11,10 @@
   position: fixed;
   left: 0;
 
+  @media screen and(max-width: 767px) {
+    right: 0;
+  }
+
   &_active {
     transition: 0.5s;
     opacity: 1;
@@ -54,16 +58,13 @@
   }
 
   &__outer-container {
+    max-width: 100%;
     transition: 1s;
     transform: translateY(-200%);
     display: flex;
     justify-content: center;
     position: relative;
     max-height: 80vh;
-
-    @media screen and(max-width: 767px) {
-      max-height: 60vh;
-    }
 
     &_for_authorize {
       height: max-content;
