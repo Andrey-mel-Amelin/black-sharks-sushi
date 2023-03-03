@@ -5,19 +5,27 @@ import { MainComponent } from '../../types/components';
 import { locationForProducts } from '../../constants';
 import Preloader from '../Preloader/Preloader';
 
-function Main({ addProductPopupOpen, adminLogged, isLoadingProducts, products, activeButtonName, location }: MainComponent) {
+function Main({
+  addProductPopupOpen,
+  adminLogged,
+  isLoadingProducts,
+  products,
+  activeButtonName,
+  location,
+  onDeleteProduct,
+}: MainComponent) {
   return (
     <main className="content">
-      <Navigation location={location} activeButtonName={activeButtonName} />
+      <Navigation activeButtonName={activeButtonName} />
       {location.pathname === '/' && <h3 className="content__recommend">Рекомендуемые товары</h3>}
-      {adminLogged === false && locationForProducts.includes(location.pathname) && <button className='content__popup-open-button' onClick={addProductPopupOpen} />}
+      <button className="content__popup-open-button" onClick={addProductPopupOpen} />
       {locationForProducts.includes(location.pathname) &&
         (isLoadingProducts ? (
           <Preloader />
         ) : (
           <section className="product-list">
             {products!.map((product) => (
-              <ProductsRoutes key={product._id} product={product} />
+              <ProductsRoutes key={product._id} product={product} onDeleteProduct={onDeleteProduct} />
             ))}
           </section>
         ))}

@@ -21,8 +21,10 @@
 
   &__item {
     background-color: #131313;
-    display: grid;
-    grid-template: repeat(auto-fill, minmax(auto, 230px)) / repeat(auto-fill, minmax(auto, 230px));
+    display: flex;
+    flex-direction: column;
+    max-width: 230px;
+    justify-content: space-between;
     justify-items: center;
     align-items: center;
     box-sizing: border-box;
@@ -33,14 +35,14 @@
     transition: 0.5s;
 
     @media screen and (max-width: 1023px) {
-      grid-template: repeat(auto-fill, minmax(auto, 230px)) / repeat(auto-fill, minmax(auto, 250px));
+      max-width: 250px;
       gap: 10px;
     }
 
     @media screen and (max-width: 767px) {
       padding: 5px;
       border-radius: 18px;
-      grid-template: repeat(auto-fill, minmax(auto, 160px)) / repeat(auto-fill, minmax(auto, 170px));
+      max-width: 170px;
     }
 
     @media screen and (min-width: 1023px) {
@@ -60,9 +62,27 @@
     }
   }
 
+  &__delete-button {
+    margin-bottom: -35px;
+    min-width: 30px;
+    min-height: 30px;
+    cursor: pointer;
+    background-color: white;
+    background-image: url(../../images/button-type-delete.svg);
+    background-size: 30px;
+    border-radius: 50%;
+    border: none;
+    align-self: flex-end;
+
+    &:active {
+      transition: 0.1s;
+      transform: scale(0.99);
+    }
+  }
+
   &__border {
     max-width: 80%;
-    max-height: 80%;
+    aspect-ratio: 1 / 1;
     display: flex;
     border: 5px rgb(250, 200, 10) solid;
     border-radius: 50%;

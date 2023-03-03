@@ -48,6 +48,10 @@
     width: 70%;
     list-style: none;
 
+    @media screen and (min-width: 1280px) {
+      max-width: 1280px;
+    }
+
     @media screen and (max-width: 767px) {
       flex-direction: column;
       gap: 20px;
@@ -92,6 +96,10 @@
     display: grid;
     align-items: flex-start;
     grid-template-columns: repeat(3, 1fr);
+
+    @media screen and (min-width: 1280px) {
+      max-width: 1280px;
+    }
 
     @media screen and (max-width: 830px) {
       display: flex;

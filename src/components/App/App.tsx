@@ -8,7 +8,7 @@ import Main from '../Main/Main';
 import Phone from '../Phone/Phone';
 import CartPopup from '../CartPopup/CartPopup';
 import LoginAdminPopup from '../LoginAdminPopup/LoginAdminPopup';
-import { useGetAllProductsQuery } from '../../utils/productsApi';
+import { useDeleteProductMutation, useGetAllProductsQuery, usePostProductMutation } from '../../utils/productsApi';
 import { useSelector } from 'react-redux';
 import { State } from '../../types/redux';
 import { allowedUrlPathname } from '../../constants';
@@ -22,8 +22,9 @@ function App() {
   const location: Location = useLocation(); // доступ к url
   const navigate: NavigateFunction = useNavigate(); // доступ к навигации по приложению
 
-  const { data, isLoading } = useGetAllProductsQuery(); // массив товаров с бэкенда / статус загрузки
-  const dataForReverse = data ? [...data] : []; // копия массива для реверса
+  const { data, isLoading } = useGetAllProductsQuery(); // получение массива товаров с бэкенда / статус загрузки
+  const [postProduct, { isSuccess }] = usePostProductMutation(); // запрос добавления продукта / положительный ответ
+  const [deleteProduct] = useDeleteProductMutation(); // запрос удлаления продукта /
   const productsInCart = useSelector((state: State) => state.cart.cartItems); // массив товаров в корзине
 
   const [isPopupCartOpen, setIsPopupCartOpen] = useState(false); // попап с корзиной товаров
@@ -36,9 +37,18 @@ function App() {
   const [resMessage, setResMessage] = useState(''); // сообщение при ответе на запросы
   const [activeButtonName, setActiveButtonName] = useState(''); // подсвечивание кнопок, в зависимости он url
 
+
+  // переключение подсветки кнопки навигации
   useEffect(() => {
     setActiveButtonName(location.pathname);
   }, [location.pathname]);
+
+  // закрыть опустошенную корзину
+  useEffect(() => {
+    if (productsInCart.length === 0) {
+      setIsPopupCartOpen(false);
+    }
+  }, [productsInCart]);
 
   /*   useEffect(() => {
     // проверка токена, подстановка данных администратора
@@ -62,7 +72,7 @@ function App() {
   }, []); */
 
   // выход из аккаунта
-  function handleLogout() {
+  function handleLogoutAdmin() {
     return api
       .logout()
       .then(() => {
@@ -75,20 +85,34 @@ function App() {
       });
   }
 
-  // закрыть опустошенную корзину
-  useEffect(() => {
-    if (productsInCart.length === 0) {
-      setIsPopupCartOpen(false);
-    }
-  }, [productsInCart]);
+  function handleCreateProduct(data: ProductForApi): Promise<void> {
+    const formData = new FormData();
+    formData.append('image', data.image!);
+    formData.append('mainProduct', String(data.mainProduct));
+    formData.append('nameProduct', data.nameProduct);
+    formData.append('type', data.type);
+    formData.append('desc', data.desc);
+    formData.append('price', String(data.price));
 
-  function createProduct(data: ProductForApi): Promise<void> {
-    return api
-      .addProducts(data)
-      .then(() => console.log('удачный запрос'))
-      .catch(() => console.log('неудачный запрос'));
+    return postProduct(formData)
+      .unwrap()
+      .then((product) => {
+        closeAllPopup();
+        console.log('Продукт успешно добавлен:', product);
+      })
+      .catch((err) => console.log('Неудачный запрос:', err));
   }
 
+  function handleDeleteProduct(idPoduct: string): Promise<void> {
+    return deleteProduct(idPoduct)
+      .unwrap()
+      .then((product) => {
+        console.log('Продукт удален:', product);
+      })
+      .catch((err) => console.log('Неудачный запрос:', err));
+  }
+
+  // проверка токена админа / аутентификация админа
   function getContent(): Promise<void> {
     return api
       .checkTokenAdmin()
@@ -101,7 +125,7 @@ function App() {
         setAdminLogged(false);
         // при невалидном jwt происходит автоматический логаут
         if (err.message.status === 401) {
-          handleLogout();
+          handleLogoutAdmin();
         }
       });
   }
@@ -141,8 +165,9 @@ function App() {
             <Main
               adminLogged={adminLogged}
               addProductPopupOpen={() => setIsAddProductPopupOpen(true)}
+              onDeleteProduct={handleDeleteProduct}
               isLoadingProducts={isLoading}
-              products={dataForReverse.reverse()}
+              products={data ? data : []}
               location={location}
               activeButtonName={activeButtonName}
             />
@@ -155,7 +180,11 @@ function App() {
             />
             <CartPopup productsInCart={productsInCart} onClose={closeAllPopup} isOpen={isPopupCartOpen} />
             <LoginAdminPopup onClose={closeAllPopup} isOpen={isAdminPopupOpen} onLogin={handleLoginAdmin} />
-            <AddProductPopup onClose={closeAllPopup} isOpen={isAddProductPopupOpen} createProduct={createProduct} />
+            <AddProductPopup
+              onClose={closeAllPopup}
+              isOpen={isAddProductPopupOpen}
+              onCreateProduct={handleCreateProduct}
+            />
           </>
         ) : (
           <Navigate to="/" />

@@ -23,22 +23,23 @@ function CartPopup({ productsInCart, isOpen, onClose }) {
       >
         <div className="popup__inner-container">
           <button className="popup__close-btn" onMouseDown={onClose} />
+          <div className="popup__announcement">
+            <p>ДОРОГИЕ КЛИЕНТЫ !</p>
+            <p>
+              Соевый соус, васаби и имбирь не входит в наборы. Заказать дополнительно можно в разделе{' '}
+              <Link to="/souce" onClick={onClose}>
+                соуса
+              </Link>
+              .
+            </p>
+          </div>
           <span className="popup__text">Ваш заказ:</span>
           <div className="popup__products-list">
             {productsInCart.map((product) => (
               <ProductInCart key={product._id} product={product} />
             ))}
           </div>
-          <div className="popup__announcement">
-            <p>ДОРОГИЕ КЛИЕНТЫ !</p>
-            <p>
-              Соевый соус, васаби и имбирь не входит в наборы. Заказать дополнительно можно в разделе{' '}
-              <Link to="/souce" onMouseDown={onClose}>
-                соуса
-              </Link>
-              .
-            </p>
-          </div>
+
           <span className="popup__total-sum">Итого: {cartTotalAmount} руб.</span>
         </div>
       </div>

@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useState } from 'react';
 import { AddProductPopupComponent } from '../../types/components';
 import { ProductForApi } from '../../types/types';
 
-function AddProductPopup({ onClose, isOpen, createProduct }: AddProductPopupComponent) {
+function AddProductPopup({ onClose, isOpen, onCreateProduct }: AddProductPopupComponent) {
   const initialProductData = { mainProduct: false, nameProduct: '', type: '', desc: '', price: 0 };
   const [productData, setProductData] = useState<ProductForApi>(initialProductData);
 
@@ -16,10 +16,13 @@ function AddProductPopup({ onClose, isOpen, createProduct }: AddProductPopupComp
     }));
   }
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: FormEvent<HTMLFormElement> & ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    createProduct(productData);
+    onCreateProduct(productData);
+
+    setProductData(initialProductData);
+    e.target.reset();
   }
 
   return (

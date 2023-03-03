@@ -1,18 +1,21 @@
+import { ChangeEvent } from 'react';
 import { Location } from 'react-router-dom';
 import { Product } from './redux';
 import { ProductForApi } from './types';
 
 type MainComponent = {
-  adminLogged: boolean;
-  addProductPopupOpen: () => void;
-  isLoadingProducts: boolean;
-  products: undefined | Product[];
-  activeButtonName: string;
   location: Location;
+  adminLogged: boolean;
+  isLoadingProducts: boolean;
+  activeButtonName: string;
+  products: undefined | Product[];
+  onDeleteProduct: (idPoduct: string) => Promise<void>;
+  addProductPopupOpen: () => void;
 };
 
 type ProductsRoutesComponent = {
   product: Product;
+  onDeleteProduct: (idPoduct: string) => Promise<void>;
 };
 
 type InfoPopupComponent = {
@@ -29,7 +32,7 @@ type LoginPopupComponent = {
 };
 
 type AddProductPopupComponent = {
-  createProduct: (data: ProductForApi) => Promise<void>;
+  onCreateProduct: (data: ProductForApi) => Promise<void>;
   onClose: () => void;
   isOpen: boolean;
 };

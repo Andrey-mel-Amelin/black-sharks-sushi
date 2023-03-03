@@ -5,7 +5,7 @@ type Product = {
   desc: string;
   type: string;
   price: number;
-  image: { path: string };
+  image: { path: string; pathForLocal: string };
   createdAt: string;
 };
 

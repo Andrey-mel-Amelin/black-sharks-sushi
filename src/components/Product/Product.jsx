@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, deleteToCart } from '../../redux/cart/cartSlice';
 
-function Product({ product, name, desc, price, type }) {
+function Product({ product, name, desc, price, type, onDeleteProduct }) {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.cart.cartItems);
   const isProductsInCart = products.some((i) => i._id === product._id);
@@ -15,8 +15,14 @@ function Product({ product, name, desc, price, type }) {
     }
   }
 
+  function handleDeleteProduct(e) {
+    e.stopPropagation();
+    onDeleteProduct(product._id);
+  }
+
   return (
     <article onClick={handleClick} className="product-list__item">
+      <button className="product-list__delete-button" onClick={(e) => handleDeleteProduct(e)} />
       <div className={type !== 'pizza' ? 'product-list__border' : 'product-list__border product-list__border_disable'}>
         <img className="product-list__image" src={product.image.path} alt={name} />
       </div>

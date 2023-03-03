@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function Navigation({ location, activeButtonName }) {
+function Navigation({ activeButtonName }) {
   const [isVisibility, setIsVisibility] = useState('hidden');
   const [isOpacity, setIsOpacity] = useState(0);
   const [menuActivity, setMenuActivity] = useState(false);

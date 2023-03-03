@@ -72,7 +72,7 @@
     border: none;
     cursor: pointer;
     transition: 0.05s;
-    background-image: url(../../images/sign-type-plus.svg);
+    background-image: url(../../images/button-type-plus.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 40px;
@@ -103,18 +103,17 @@
     }
 
     &_type_minus {
-      background-image: url(../../images/sign-type-minus.svg);
+      background-image: url(../../images/button-type-minus.svg);
       border-radius: 0 9px 9px 0;
     }
 
     &_type_delete {
-      background-image: url(../../images/sign-type-delete.svg);
+      background-image: url(../../images/button-type-delete.svg);
       min-width: 30px;
       min-height: 30px;
       background-size: 20px;
       border-radius: 10px;
       grid-area: delete;
-      color: black;
 
       &:active {
         background-size: 17px;
@@ -136,6 +135,7 @@
       border-radius: 10px;
       background-image: none;
       background-color: rgb(255, 120, 120);
+      color: black;
 
       &:hover {
         background-color: rgb(255, 120, 120);

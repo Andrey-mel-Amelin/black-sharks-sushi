@@ -1,7 +1,7 @@
 type NavigationButtonNames = string;
 
 type ProductForApi = {
-  image?: File;
+  image?: File | null;
   mainProduct: boolean;
   nameProduct: string;
   type: string;

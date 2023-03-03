@@ -19,6 +19,10 @@
   opacity: 0;
   visibility: hidden;
 
+  @media screen and (min-width: 1280px) {
+    left: calc(100% - 10%);
+  }
+
   @media screen and (max-width: 767px) {
     min-width: 60px;
     min-height: 60px;
