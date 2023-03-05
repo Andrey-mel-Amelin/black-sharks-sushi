@@ -3,7 +3,7 @@ import { AddProductPopupComponent } from '../../types/components';
 import { ProductForApi } from '../../types/types';
 
 function AddProductPopup({ onClose, isOpen, onCreateProduct }: AddProductPopupComponent) {
-  const initialProductData = { mainProduct: 'false', nameProduct: '', type: '', desc: '', price: '0' };
+  const initialProductData = { mainProduct: false, nameProduct: '', type: '', desc: '', price: '0' };
   const [productData, setProductData] = useState<ProductForApi>(initialProductData);
 
   function handleChange(
@@ -56,7 +56,7 @@ function AddProductPopup({ onClose, isOpen, onCreateProduct }: AddProductPopupCo
                 placeholder="Главный продукт"
                 name="mainProduct"
                 type="checkbox"
-                checked={productData.mainProduct === 'true' ? true : false }
+                checked={productData.mainProduct}
                 onChange={handleChange}
               />
             </label>

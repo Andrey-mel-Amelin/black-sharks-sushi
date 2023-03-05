@@ -46,7 +46,7 @@ class Api {
   addProducts(data: ProductForApi) {
     const formData = new FormData();
     formData.append('image', data.image!);
-    formData.append('mainProduct', data.mainProduct);
+    formData.append('mainProduct', data.mainProduct === true ? 'true' : 'false');
     formData.append('nameProduct', data.nameProduct);
     formData.append('type', data.type);
     formData.append('desc', data.desc);
