@@ -1,9 +1,10 @@
-import { ChangeEvent } from 'react';
 import { Location } from 'react-router-dom';
 import { Product } from './redux';
 import { ProductForApi } from './types';
 
 type MainComponent = {
+  menuActivity: boolean;
+  onMenuToggle: () => void;
   location: Location;
   adminLogged: boolean;
   isLoadingProducts: boolean;

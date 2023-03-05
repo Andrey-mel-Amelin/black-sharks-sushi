@@ -23,7 +23,7 @@ function App() {
   const navigate: NavigateFunction = useNavigate(); // доступ к навигации по приложению
 
   const { data, isLoading } = useGetAllProductsQuery(); // получение массива товаров с бэкенда / статус загрузки
-  const [postProduct, { isSuccess }] = usePostProductMutation(); // запрос добавления продукта / положительный ответ
+  const [postProduct] = usePostProductMutation(); // запрос добавления продукта / положительный ответ
   const [deleteProduct] = useDeleteProductMutation(); // запрос удлаления продукта /
   const productsInCart = useSelector((state: State) => state.cart.cartItems); // массив товаров в корзине
 
@@ -37,6 +37,7 @@ function App() {
   const [resMessage, setResMessage] = useState(''); // сообщение при ответе на запросы
   const [activeButtonName, setActiveButtonName] = useState(''); // подсвечивание кнопок, в зависимости он url
 
+  const [menuActivity, setMenuActivity] = useState(false); // меню
 
   // переключение подсветки кнопки навигации
   useEffect(() => {
@@ -49,6 +50,11 @@ function App() {
       setIsPopupCartOpen(false);
     }
   }, [productsInCart]);
+
+  useEffect(() => {
+    window.innerWidth <= 1023 && setMenuActivity(false)
+  }, [location.pathname])
+  
 
   /*   useEffect(() => {
     // проверка токена, подстановка данных администратора
@@ -147,10 +153,16 @@ function App() {
       });
   }
 
+  // закрытие всех всплывающих окон
   function closeAllPopup() {
     setIsAdminPopupOpen(false);
     setIsPopupCartOpen(false);
     setIsAddProductPopupOpen(false);
+  }
+
+  // переключение кнопки меню
+  function handleMenuToggle() {
+    setMenuActivity((active) => !active);
   }
 
   return (
@@ -163,6 +175,8 @@ function App() {
             <Cart productsInCart={productsInCart} onCartPopup={setIsPopupCartOpen} />
             <Header />
             <Main
+              menuActivity={menuActivity}
+              onMenuToggle={handleMenuToggle}
               adminLogged={adminLogged}
               addProductPopupOpen={() => setIsAddProductPopupOpen(true)}
               onDeleteProduct={handleDeleteProduct}

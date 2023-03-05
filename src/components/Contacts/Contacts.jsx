@@ -2,13 +2,13 @@ function Contacts() {
   return (
     <div className="contacts">
       <p className="contacts__text">
-        <span className="contacts__text contacts__text_header">Контакты</span>+7-961-888-65-69
-        <span>blacksharks70@bk.ru</span>
+        <span className="contacts__text contacts__text_header">Контакты</span>+7-999-999-99-99
+        <span>mail@mail.ru</span>
       </p>
       <p className="contacts__text">
-        <span className="contacts__text contacts__text_header">Адрес</span> г.Северск ул.Лесная 1а.стр5
+        <span className="contacts__text contacts__text_header">Адрес</span> г. Москва(Кремль)
       </p>
-      <div style={{ width: '560px', height: '800px', overflow: 'hidden', position: 'relative' }}>
+{/*       <div style={{ width: '560px', height: '800px', overflow: 'hidden', position: 'relative' }}>
         <iframe
           title="yandex-reviews"
           style={{
@@ -72,7 +72,7 @@ function Contacts() {
             overflow: 'hidden',
           }}
         ></iframe>
-      </div>
+      </div> */}
     </div>
   );
 }

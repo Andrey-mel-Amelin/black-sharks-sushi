@@ -6,13 +6,25 @@
   max-width: 50%;
   gap: 20px;
 
+  @media screen and(max-width: 767px) {
+    max-width: 90%;
+  }
+
   &__text {
     text-align: center;
     margin: 0;
 
+    @media screen and(max-width: 767px) {
+      font-size: 11px;
+    }
+
     &_header {
       font-size: 40px;
       font-weight: 600;
+
+      @media screen and(max-width: 767px) {
+        font-size: 30px;
+      }
     }
 
     &_type_list {

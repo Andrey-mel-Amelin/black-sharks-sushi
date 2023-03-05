@@ -1,14 +1,31 @@
 .navigation {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
+  min-width: 100%;
   min-height: 31px;
   gap: 20px;
   align-items: center;
   justify-content: center;
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 1023px) {
     width: calc(100% - 20px);
+
+    &_mobile {
+      background-color: black;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      transform: translateY(-100%);
+      transition: 0.5s;
+      min-height: 100px;
+      z-index: 200;
+    }
+
+    &_mobile_active {
+      transform: translateY(0%);
+      transition: 0.5s;
+    }
   }
 
   &__roll {

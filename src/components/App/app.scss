@@ -10,4 +10,9 @@
   flex-direction: column;
   gap: 30px;
   cursor: default;
+  position: relative;
+
+  @media screen and(max-width: 767px) {
+    gap:0;
+  }
 }
