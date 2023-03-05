@@ -1,17 +1,16 @@
 import { backendUrl } from '../constants';
+import { ProductForApi } from '../types/types';
 
 class Api {
-  constructor(baseUrl, headers) {
-    this._baseUrl = baseUrl;
-    this._headers = headers;
+  constructor(public baseUrl: string, public headers: {}) {
+    this.baseUrl = baseUrl;
+    this.headers = headers;
   }
 
-  _fetch({ url, method = 'POST', data }) {
-    return fetch(`${this._baseUrl}${url}`, {
+  _fetch({ url, method = 'POST', data }: { url: string; method?: string; data?: object }) {
+    return fetch(`${this.baseUrl}${url}`, {
       method: method,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: this.headers,
       mode: 'cors',
       credentials: 'include',
       ...(!!data && { body: JSON.stringify(data) }),
@@ -23,8 +22,8 @@ class Api {
     });
   }
 
-  _fetchFormData({ url, product }) {
-    return fetch(`${this._baseUrl}${url}`, {
+  _fetchFormData({ url, product }: { url: string; product: FormData }) {
+    return fetch(`${this.baseUrl}${url}`, {
       method: 'POST',
       mode: 'cors',
       credentials: 'include',
@@ -44,9 +43,9 @@ class Api {
     });
   }
 
-  addProducts(data) {
+  addProducts(data: ProductForApi) {
     const formData = new FormData();
-    formData.append('image', data.image);
+    formData.append('image', data.image!);
     formData.append('mainProduct', data.mainProduct);
     formData.append('nameProduct', data.nameProduct);
     formData.append('type', data.type);
@@ -59,7 +58,7 @@ class Api {
     });
   }
 
-  loginAdmin(data) {
+  loginAdmin(data: { name: string; password: string }) {
     return this._fetch({
       url: 'admin/login',
       data: {

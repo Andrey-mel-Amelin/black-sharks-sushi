@@ -1,12 +1,15 @@
+import { BaseSyntheticEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, deleteToCart } from '../../redux/cart/cartSlice';
+import { ProductComponent } from '../../types/components';
+import { State } from '../../types/redux';
 
-function Product({ product, name, desc, price, type, onDeleteProduct }) {
+function Product({ product, name, desc, price, type, onDeleteProduct }: ProductComponent) {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.cart.cartItems);
+  const products = useSelector((state: State) => state.cart.cartItems);
   const isProductsInCart = products.some((i) => i._id === product._id);
 
-  function handleClick(e) {
+  function handleClick(e: Event | BaseSyntheticEvent) {
     e.stopPropagation();
     if (isProductsInCart) {
       dispatch(deleteToCart(product));
@@ -15,7 +18,7 @@ function Product({ product, name, desc, price, type, onDeleteProduct }) {
     }
   }
 
-  function handleDeleteProduct(e) {
+  function handleDeleteProduct(e: Event | BaseSyntheticEvent) {
     e.stopPropagation();
     onDeleteProduct(product._id);
   }

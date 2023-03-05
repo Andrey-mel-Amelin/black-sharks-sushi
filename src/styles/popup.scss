@@ -48,7 +48,7 @@
       opacity: 0.6;
     }
 
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 1023px) {
       left: 15px;
       top: -35px;
       background-size: 20px 20px;
@@ -81,10 +81,10 @@
     color: black;
     border-radius: 8px;
 
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 1023px) {
       gap: 0;
       padding: 10px;
-      max-width: 370px;
+      max-width: 90%;
     }
 
     @media screen and (max-width: 400px) {

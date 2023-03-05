@@ -7,9 +7,12 @@ type Product = {
   price: number;
   image: { path: string; pathForLocal: string };
   createdAt: string;
+  cartQuantity?: number;
+  cartTotalAmount?: number;
 };
 
 type State = {
+  status: string;
   products: {
     items: Product[];
     status: null | string;

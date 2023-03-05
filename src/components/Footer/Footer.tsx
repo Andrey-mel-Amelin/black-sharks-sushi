@@ -1,4 +1,6 @@
-function Footer({ location, onLogin }) {
+import { FooterComponent } from "../../types/components";
+
+function Footer({ location, onLogin }: FooterComponent) {
   return (
     <footer className="footer">
       {location.pathname === '/' && (

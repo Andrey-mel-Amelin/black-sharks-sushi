@@ -2,12 +2,14 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getTotals } from '../../redux/cart/cartSlice';
+import { CartPopupComponent } from '../../types/components';
+import { State } from '../../types/redux';
 import ProductInCart from '../ProductInCart/ProductInCart';
 
-function CartPopup({ productsInCart, isOpen, onClose }) {
+function CartPopup({ productsInCart, isOpen, onClose }: CartPopupComponent) {
   const dispatch = useDispatch();
 
-  const { cartTotalAmount } = useSelector((state) => state.cart);
+  const { cartTotalAmount } = useSelector((state: State) => state.cart);
 
   useEffect(() => {
     dispatch(getTotals());
@@ -22,7 +24,7 @@ function CartPopup({ productsInCart, isOpen, onClose }) {
         className="popup__outer-container"
       >
         <div className="popup__inner-container">
-          <button className="popup__close-btn" onMouseDown={onClose} />
+          <button className="popup__close-btn" onClick={onClose} />
           <div className="popup__announcement">
             <p>ДОРОГИЕ КЛИЕНТЫ !</p>
             <p>
@@ -35,7 +37,7 @@ function CartPopup({ productsInCart, isOpen, onClose }) {
           </div>
           <span className="popup__text">Ваш заказ:</span>
           <div className="popup__products-list">
-            {productsInCart.map((product) => (
+            {productsInCart.cartItems.map((product) => (
               <ProductInCart key={product._id} product={product} />
             ))}
           </div>

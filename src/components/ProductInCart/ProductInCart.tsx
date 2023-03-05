@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { decrementProduct, deleteToCart, incrementProduct } from '../../redux/cart/cartSlice';
+import { ProductInCartComponent } from '../../types/components';
 
-function ProductInCart({ product }) {
+function ProductInCart({ product }: ProductInCartComponent) {
   const dispatch = useDispatch();
 
   const [count, setCount] = useState(5);
@@ -14,7 +15,8 @@ function ProductInCart({ product }) {
 
   useEffect(() => {
     if (toogleDeleteProduct === true) {
-      const timer = count > 0 && setInterval(() => setCount((count) => count - 1), 1000);
+      /* count > 0 && */
+      const timer = setInterval(() => setCount((count) => count - 1), 1000);
       return () => clearInterval(timer);
     } else {
       setCount(5);
@@ -41,7 +43,7 @@ function ProductInCart({ product }) {
           className="product-in-cart__button product-in-cart__button_type_minus"
         />
       </div>
-      <span className="product-in-cart__total-price-product">{product.cartQuantity * product.price} руб.</span>
+      <span className="product-in-cart__total-price-product">{product.cartQuantity! * product.price} руб.</span>
       <button
         onClick={handleToggleDeleteProduct}
         className={`product-in-cart__button ${

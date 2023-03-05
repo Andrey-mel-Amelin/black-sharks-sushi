@@ -25,7 +25,7 @@ function App() {
   const { data, isLoading } = useGetAllProductsQuery(); // получение массива товаров с бэкенда / статус загрузки
   const [postProduct] = usePostProductMutation(); // запрос добавления продукта / положительный ответ
   const [deleteProduct] = useDeleteProductMutation(); // запрос удлаления продукта /
-  const productsInCart = useSelector((state: State) => state.cart.cartItems); // массив товаров в корзине
+  const productsInCart = useSelector((state: State) => state.cart); // массив товаров в корзине
 
   const [isPopupCartOpen, setIsPopupCartOpen] = useState(false); // попап с корзиной товаров
   const [isAdminPopupOpen, setIsAdminPopupOpen] = useState(false); // попап с формой для админа
@@ -46,11 +46,12 @@ function App() {
 
   // закрыть опустошенную корзину
   useEffect(() => {
-    if (productsInCart.length === 0) {
+    if (productsInCart.cartItems.length === 0) {
       setIsPopupCartOpen(false);
     }
   }, [productsInCart]);
 
+  // закрытие меню при переключении между url для мобильных
   useEffect(() => {
     window.innerWidth <= 1023 && setMenuActivity(false)
   }, [location.pathname])
@@ -77,7 +78,7 @@ function App() {
     getContent();
   }, []); */
 
-  // выход из аккаунта
+  // выход из аккаунта админа
   function handleLogoutAdmin() {
     return api
       .logout()
@@ -91,6 +92,7 @@ function App() {
       });
   }
 
+  // создание нового продукта
   function handleCreateProduct(data: ProductForApi): Promise<void> {
     const formData = new FormData();
     formData.append('image', data.image!);
@@ -109,6 +111,7 @@ function App() {
       .catch((err) => console.log('Неудачный запрос:', err));
   }
 
+  // удаление продукта
   function handleDeleteProduct(idPoduct: string): Promise<void> {
     return deleteProduct(idPoduct)
       .unwrap()
@@ -136,6 +139,7 @@ function App() {
       });
   }
 
+  // авторизация админа
   function handleLoginAdmin(name: string, password: string) {
     return api
       .loginAdmin({ name, password })
@@ -172,7 +176,7 @@ function App() {
           <>
             {adminLogged && <AdminPanel />}
             <Phone />
-            <Cart productsInCart={productsInCart} onCartPopup={setIsPopupCartOpen} />
+            <Cart productsInCart={productsInCart.cartItems} onCartPopup={setIsPopupCartOpen} />
             <Header />
             <Main
               menuActivity={menuActivity}

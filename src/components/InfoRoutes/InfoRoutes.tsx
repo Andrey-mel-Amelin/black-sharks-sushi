@@ -14,8 +14,3 @@ function InfoRoutes() {
 }
 
 export default InfoRoutes;
-
-/* <Route exact path="/contacts" component={contacts} />
-      <Route exact path="/onas" component={onas} />
-      <Route exact path="/dostavka" component={dostavka} />
-      <Route exact path="/spec" component={spec} />  */

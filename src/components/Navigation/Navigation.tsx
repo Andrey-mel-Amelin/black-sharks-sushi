@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { NavigationComponent } from '../../types/components';
 
-function Navigation({ menuActivity, activeButtonName }) {
+function Navigation({ menuActivity, activeButtonName }: NavigationComponent) {
   const [isVisibility, setIsVisibility] = useState('hidden');
-  const [isOpacity, setIsOpacity] = useState(0);
 
   return (
     <nav className={`navigation navigation_mobile ${menuActivity ? 'navigation_mobile_active' : ''}`}>
@@ -15,16 +15,10 @@ function Navigation({ menuActivity, activeButtonName }) {
           <Link className={`link ${activeButtonName === '/roll' ? 'link_active' : ''}`} to="/roll">
             РОЛЛЫ
           </Link>
-          <Link
-            className={`link ${activeButtonName === '/gorroll' ? 'link_active' : ''}`}
-            to="/gorroll"
-          >
+          <Link className={`link ${activeButtonName === '/gorroll' ? 'link_active' : ''}`} to="/gorroll">
             ГОРЯЧИЕ РОЛЛЫ
           </Link>
-          <Link
-            className={`link ${activeButtonName === '/meksroll' ? 'link_active' : ''}`}
-            to="/meksroll"
-          >
+          <Link className={`link ${activeButtonName === '/meksroll' ? 'link_active' : ''}`} to="/meksroll">
             МЕКСИКАНСКИЕ РОЛЛЫ
           </Link>
         </>
@@ -32,16 +26,14 @@ function Navigation({ menuActivity, activeButtonName }) {
         <div
           onMouseDown={() => {
             setIsVisibility('visible');
-            setIsOpacity(1);
           }}
           onMouseLeave={() => {
             setIsVisibility('hidden');
-            setIsOpacity(0);
           }}
           className="navigation__roll"
         >
           <span>РОЛЛЫ</span>
-          <ul style={{ visibility: isVisibility, opacity: isOpacity }} className="navigation__roll-list">
+          <ul className={`navigation__roll-list ${isVisibility === 'visible' ? 'navigation__roll-list_visible' : ''}`}>
             <li className="navigation__roll-list-item">
               <div />
             </li>

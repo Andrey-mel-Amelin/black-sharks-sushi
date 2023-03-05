@@ -1,5 +1,3 @@
-import React from 'react';
-
 function Phone() {
   return (
     <a className="phone" href="tel:+79618886569">

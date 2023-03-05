@@ -2,11 +2,11 @@ type NavigationButtonNames = string;
 
 type ProductForApi = {
   image?: File | null;
-  mainProduct: boolean;
+  mainProduct: string;
   nameProduct: string;
   type: string;
   desc: string;
-  price: number;
+  price: string;
 };
 
 export type { NavigationButtonNames, ProductForApi };

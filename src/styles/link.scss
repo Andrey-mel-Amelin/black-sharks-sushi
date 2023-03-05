@@ -5,6 +5,11 @@
   text-decoration: none;
   padding: 0.5%;
   border-radius: 8px;
+  font-size: 14px;
+
+  @media screen and(max-width: 1023px) {
+    border-radius: 15px;
+  }
 
   &:hover {
     transition: 0.5s;
@@ -21,7 +26,7 @@
     background-color:#fac80a;
 
     @media screen and(max-width: 1023px) {
-      padding: 0.5% 30px;
+      padding: 0.5% 10px;
     }
 
     &:hover {
